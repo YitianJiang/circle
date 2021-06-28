@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.acircle.circle.dao.UserDao">
+    <resultMap id="UserDetail" type="com.acircle.circle.dto.UserDetail"
+               extends="com.acircle.circle.mapper.UserMapper.BaseResultMap">
+        <result column="fans_num" jdbcType="BIGINT" property="fansNum" />
+    </resultMap>
+    <select id="getUserDetailsByUserId" resultMap="UserDetail">
+		SELECT
+			u.id,
+			u.`name`,
+			u.avatar_url,
+			COUNT(f.from_user_id) fans_num
+		FROM
+			`user` u
+			LEFT JOIN follow f on u.id = f.to_user_id
+		WHERE u.id = #{userId}
+		GROUP BY u.id
+    </select>
+</mapper>

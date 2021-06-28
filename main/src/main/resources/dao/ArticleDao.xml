@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.acircle.circle.dao.ArticleDao">
+    <resultMap id="ArticleDetail" type="com.acircle.circle.dto.ArticleDetail"
+               extends="com.acircle.circle.mapper.ArticleMapper.BaseResultMap">
+        <!--<association property="user" columnPrefix="u_" resultMap="com.acircle.circle.mapper.UserMapper.BaseResultMap">-->
+        <!--</association>-->
+        <collection property="images" columnPrefix="i_" resultMap="com.acircle.circle.mapper.ImageMapper.BaseResultMap">
+        </collection>
+    </resultMap>
+    <select id="getArticleBaseInfo" resultMap="ArticleDetail">
+        SELECT
+            a.id id,
+            a.text text,
+            a.video_url video_url,
+            a.user_id user_id,
+            a.create_time create_time,
+            i.image_url i_image_url
+        FROM
+            article a
+            LEFT JOIN image i ON a.id = i.article_id
+    </select>
+    <select id="getArticleDetailsByUserId" resultMap="ArticleDetail">
+        SELECT
+          t.id,
+          t.text,
+          t.video_url,
+          t.create_time,
+          t.u_id,
+          t.u_name,
+          t.u_avatar_url,
+          i.image_url i_image_url
+        FROM(
+            SELECT
+                a.id id,
+                a.text text,
+                a.video_url video_url,
+                a.create_time create_time,
+                u.id u_id,
+                u.`name` u_name,
+                u.avatar_url u_avatar_url
+            FROM
+                article a
+                LEFT JOIN `user` u ON a.user_id = u.id
+            WHERE u.id = #{userId}
+            LIMIT  #{offSet},#{limit})  AS t
+        LEFT JOIN image i ON t.id = i.article_id
+    </select>
+    <select id="getUserLikedArticleDetails" resultMap="ArticleDetail">
+        SELECT
+            t.id,
+            t.text,
+            t.video_url,
+            t.create_time,
+            t.u_id,
+            t.u_name,
+            t.u_avatar_url,
+            i.image_url i_image_url
+        FROM(
+            SELECT
+                a.id id,
+                a.text text,
+                a.video_url video_url,
+                a.create_time create_time,
+                u.id u_id,
+                u.`name` u_name,
+                u.avatar_url u_avatar_url,
+                l.id l_id
+            FROM
+                article a
+                LEFT JOIN `user` u ON a.user_id = u.id
+                LEFT JOIN `like` l ON a.id = l.article_id
+            WHERE
+                l.user_id = #{userId}
+            ORDER BY l_id DESC
+            LIMIT #{offSet},#{limit}) AS t
+            LEFT JOIN image i ON t.id = i.article_id
+        ORDER BY l_id DESC
+    </select>
+    <select id="getUserCommentedArticleDetails" resultMap="ArticleDetail">
+        SELECT
+            t.id,
+            t.text,
+            t.video_url,
+            t.create_time,
+            t.u_id,
+            t.u_name,
+            t.u_avatar_url,
+            i.image_url i_image_url
+        FROM(
+            SELECT
+                a.id id,
+                a.text text,
+                a.video_url video_url,
+                a.create_time create_time,
+                u.id u_id,
+                u.`name` u_name,
+                u.avatar_url u_avatar_url,
+                MAX(c.id) c_id
+            FROM
+                article a
+                LEFT JOIN `user` u ON a.user_id = u.id
+                LEFT JOIN `comment` c ON a.id = c.article_id
+            WHERE
+                c.from_user_id = #{userId}
+   			GROUP BY a.id
+ 			ORDER BY c_id DESC
+            LIMIT #{offSet},#{limit}) AS t
+            LEFT JOIN image i ON t.id = i.article_id
+		ORDER BY c_id DESC
+    </select>
+    <select id="getUserBookmarkedArticleDetails" resultMap="ArticleDetail">
+        SELECT
+            t.id,
+            t.text,
+            t.video_url,
+            t.create_time,
+            t.u_id,
+            t.u_name,
+            t.u_avatar_url,
+            i.image_url i_image_url
+        FROM(
+            SELECT
+                a.id id,
+                a.text text,
+                a.video_url video_url,
+                a.create_time create_time,
+                u.id u_id,
+                u.`name` u_name,
+                u.avatar_url u_avatar_url,
+                b.id b_id
+            FROM
+                article a
+                LEFT JOIN `user` u ON a.user_id = u.id
+                LEFT JOIN bookmark b ON a.id = b.article_id
+            WHERE
+                b.user_id = #{userId}
+            ORDER BY b_id DESC
+            LIMIT #{offSet},#{limit}) AS t
+            LEFT JOIN image i ON t.id = i.article_id
+        ORDER BY b_id DESC
+    </select>
+    <select id="getBrowserHistory" resultMap="ArticleDetail">
+        SELECT
+            t.id,
+            t.text,
+            t.video_url,
+            t.create_time,
+            t.u_id,
+            t.u_name,
+            t.u_avatar_url,
+            i.image_url i_image_url
+        FROM(
+            SELECT
+                a.id id,
+                a.text text,
+                a.video_url video_url,
+                a.create_time create_time,
+                u.id u_id,
+                u.`name` u_name,
+                u.avatar_url u_avatar_url,
+                b.id b_id
+            FROM
+                article a
+                LEFT JOIN `user` u ON a.user_id = u.id
+                LEFT JOIN browser_history b ON a.id = b.article_id
+            WHERE
+                b.user_id = #{userId}
+			ORDER BY b_id DESC
+            LIMIT #{offSet},#{limit}) AS t
+            LEFT JOIN image i ON t.id = i.article_id
+		ORDER BY b_id DESC
+    </select>
+</mapper>

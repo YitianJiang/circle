@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.acircle.circle.dao.LikeDao">
+    <resultMap id="LikeDetail" type="com.acircle.circle.dto.LikeDetail"
+               extends="com.acircle.circle.mapper.LikeMapper.BaseResultMap">
+        <association property="user" columnPrefix="u_" resultMap="com.acircle.circle.mapper.UserMapper.BaseResultMap">
+        </association>
+    </resultMap>
+    <select id="getLikeDetailsByArticleId" resultMap="LikeDetail">
+        SELECT
+            l.id id,
+            u.id u_id,
+            u.`name` u_name,
+            u.avatar_url u_avatar_url
+        FROM
+            article a
+            LEFT JOIN `like` l ON a.id = l.article_id
+            LEFT JOIN `user` u ON l.user_id = u.id
+        WHERE
+            a.id = #{articleId}
+    </select>
+</mapper>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.acircle.circle.dao.CommentDao">
+    <resultMap id="CommentDetail" type="com.acircle.circle.dto.CommentDetail"
+               extends="com.acircle.circle.mapper.CommentMapper.BaseResultMap">
+        <association property="fromUser" columnPrefix="fu_" resultMap="com.acircle.circle.mapper.UserMapper.BaseResultMap">
+        </association>
+        <association property="toUser" columnPrefix="tu_" resultMap="com.acircle.circle.mapper.UserMapper.BaseResultMap">
+        </association>
+    </resultMap>
+    <select id="getCommentDetailsByArticleId" resultMap="CommentDetail">
+        SELECT
+            c.id id,
+            c.content content,
+            c.create_time create_time,
+            fu.id fu_id,
+            fu.`name` fu_name,
+            fu.avatar_url fu_avatar_url,
+            tu.id tu_id,
+            tu.`name` tu_name,
+            tu.avatar_url tu_avatar_url
+        FROM
+            article a
+            LEFT JOIN `comment` c ON a.id = c.article_id
+            LEFT JOIN `user` fu ON c.from_user_id = fu.id
+            LEFT JOIN `user` tu ON c.to_user_id = tu.id
+        WHERE
+            a.id = #{articleId}
+    </select>
+</mapper>

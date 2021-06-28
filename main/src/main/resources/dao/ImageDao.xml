@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.acircle.circle.dao.ImageDao">
+    <insert id="insertImages">
+        insert into image (id,image_url,article_id) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.id,jdbcType=BIGINT},
+            #{item.imageUrl,jdbcType=VARCHAR},
+            #{item.articleId,jdbcType=BIGINT})
+        </foreach>
+    </insert>
+</mapper>
