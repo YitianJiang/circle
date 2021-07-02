@@ -56,6 +56,8 @@
         <circle-common.version>1.0.0-SNAPSHOT</circle-common.version>
         <circle-mbg.version>1.0.0-SNAPSHOT</circle-mbg.version>
 
+        <docker-image-repository-address>registry.cn-hangzhou.aliyuncs.com/jiangyitian/aliyun-docker-image-registry</docker-image-repository-address>
+
     </properties>
 
     <dependencies>
@@ -242,7 +244,9 @@
         </dependencies>
     </dependencyManagement>
 
+
     <build>
+
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -272,13 +276,25 @@
                                 <goal>build</goal>
                             </goals>
                         </execution>
+                        <execution>
+                            <id>push-image</id>
+                            <phase>deploy</phase>
+                            <goals>
+                                <goal>push</goal>
+                            </goals>
+                            <configuration>
+                                <imageName>${docker-image-repository-address}:circle-${project.artifactId}-${project.version}</imageName>
+                            </configuration>
+                        </execution>
                     </executions>
                     <configuration>
-                        <imageName>2138127826/${project.artifactId}:${project.version}</imageName>
+                        <serverId>aliyun-docker-image-registry</serverId>
+                        <registryUrl>registry.cn-hangzhou.aliyuncs.com</registryUrl>
+                        <pushImage>true</pushImage>
+                        <imageName>${docker-image-repository-address}:circle-${project.artifactId}-${project.version}</imageName>
                         <dockerHost>http://10.0.0.201:2375</dockerHost>
                         <baseImage>java:8</baseImage>
-                        <entryPoint>["java", "-jar","/${project.build.finalName}.jar"]
-                        </entryPoint>
+                        <entryPoint>["java", "-jar","/${project.build.finalName}.jar"]</entryPoint>
                         <resources>
                             <resource>
                                 <targetPath>/</targetPath>
