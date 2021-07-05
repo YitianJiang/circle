@@ -6,3 +6,13 @@ spring:
       config:
         server-addr: http://10.0.0.201:8848
         file-extension: yaml
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: 'http://10.0.0.201:8201/circle-auth/rsa/publicKey' #配置RSA的公钥访问地址
+  redis:
+    database: 0
+    port: 6379
+    host: 10.0.0.201
+    password:

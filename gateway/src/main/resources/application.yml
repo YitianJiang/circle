@@ -20,16 +20,6 @@ spring:
             - Path=/circle-main/**
           filters:
             - StripPrefix=1
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          jwk-set-uri: 'http://localhost:8201/circle-auth/rsa/publicKey' #配置RSA的公钥访问地址
-  redis:
-    database: 0
-    port: 6379
-    host: localhost
-    password:
 secure:
   ignore:
     urls: #配置白名单路径

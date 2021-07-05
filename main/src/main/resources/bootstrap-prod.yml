@@ -2,7 +2,23 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: http://nacos-registry:8848
+        server-addr: http://${ENV_HOST}:8848
       config:
-        server-addr: http://nacos-registry:8848
+        server-addr: http://${ENV_HOST}}:8848
         file-extension: yaml
+  datasource:
+    url: jdbc:mysql://${ENV_HOST}:3306/circle?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+  redis:
+    host: ${ENV_HOST} # Redis服务器地址
+    database: 0 # Redis数据库索引（默认为0）
+    port: 6379 # Redis服务器连接端口
+    password:  # Redis服务器连接密码（默认为空）
+    timeout: 3000ms # 连接超时时间（毫秒）
+  dubbo:
+    application:
+      name: leaf-consumer
+    registry:
+      address: zookeeper://${ENV_HOST}:2181
+    scan: com.acircle.circle
