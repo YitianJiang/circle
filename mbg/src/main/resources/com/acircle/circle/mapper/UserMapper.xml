@@ -6,7 +6,6 @@
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="avatar_url" jdbcType="VARCHAR" property="avatarUrl" />
     <result column="introduction" jdbcType="VARCHAR" property="introduction" />
-    <result column="toutiao_open_id" jdbcType="BIGINT" property="toutiaoOpenId" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="status" jdbcType="INTEGER" property="status" />
@@ -72,8 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, `name`, avatar_url, introduction, toutiao_open_id, `password`, create_time, `status`, 
-    phone, email
+    id, `name`, avatar_url, introduction, `password`, create_time, `status`, phone, email
   </sql>
   <select id="selectByExample" parameterType="com.acircle.circle.model.UserExample" resultMap="BaseResultMap">
     select
@@ -107,13 +105,13 @@
   </delete>
   <insert id="insert" parameterType="com.acircle.circle.model.User">
     insert into `user` (id, `name`, avatar_url, 
-      introduction, toutiao_open_id, `password`, 
-      create_time, `status`, phone, 
-      email)
+      introduction, `password`, create_time, 
+      `status`, phone, email
+      )
     values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{avatarUrl,jdbcType=VARCHAR}, 
-      #{introduction,jdbcType=VARCHAR}, #{toutiaoOpenId,jdbcType=BIGINT}, #{password,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR})
+      #{introduction,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.acircle.circle.model.User">
     insert into `user`
@@ -129,9 +127,6 @@
       </if>
       <if test="introduction != null">
         introduction,
-      </if>
-      <if test="toutiaoOpenId != null">
-        toutiao_open_id,
       </if>
       <if test="password != null">
         `password`,
@@ -161,9 +156,6 @@
       </if>
       <if test="introduction != null">
         #{introduction,jdbcType=VARCHAR},
-      </if>
-      <if test="toutiaoOpenId != null">
-        #{toutiaoOpenId,jdbcType=BIGINT},
       </if>
       <if test="password != null">
         #{password,jdbcType=VARCHAR},
@@ -203,9 +195,6 @@
       <if test="record.introduction != null">
         introduction = #{record.introduction,jdbcType=VARCHAR},
       </if>
-      <if test="record.toutiaoOpenId != null">
-        toutiao_open_id = #{record.toutiaoOpenId,jdbcType=BIGINT},
-      </if>
       <if test="record.password != null">
         `password` = #{record.password,jdbcType=VARCHAR},
       </if>
@@ -232,7 +221,6 @@
       `name` = #{record.name,jdbcType=VARCHAR},
       avatar_url = #{record.avatarUrl,jdbcType=VARCHAR},
       introduction = #{record.introduction,jdbcType=VARCHAR},
-      toutiao_open_id = #{record.toutiaoOpenId,jdbcType=BIGINT},
       `password` = #{record.password,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       `status` = #{record.status,jdbcType=INTEGER},
@@ -253,9 +241,6 @@
       </if>
       <if test="introduction != null">
         introduction = #{introduction,jdbcType=VARCHAR},
-      </if>
-      <if test="toutiaoOpenId != null">
-        toutiao_open_id = #{toutiaoOpenId,jdbcType=BIGINT},
       </if>
       <if test="password != null">
         `password` = #{password,jdbcType=VARCHAR},
@@ -280,7 +265,6 @@
     set `name` = #{name,jdbcType=VARCHAR},
       avatar_url = #{avatarUrl,jdbcType=VARCHAR},
       introduction = #{introduction,jdbcType=VARCHAR},
-      toutiao_open_id = #{toutiaoOpenId,jdbcType=BIGINT},
       `password` = #{password,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       `status` = #{status,jdbcType=INTEGER},

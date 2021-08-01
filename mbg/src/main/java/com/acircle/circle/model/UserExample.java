@@ -375,66 +375,6 @@ public class UserExample {
             return (Criteria) this;
         }
 
-        public Criteria andToutiaoOpenIdIsNull() {
-            addCriterion("toutiao_open_id is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andToutiaoOpenIdIsNotNull() {
-            addCriterion("toutiao_open_id is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andToutiaoOpenIdEqualTo(Long value) {
-            addCriterion("toutiao_open_id =", value, "toutiaoOpenId");
-            return (Criteria) this;
-        }
-
-        public Criteria andToutiaoOpenIdNotEqualTo(Long value) {
-            addCriterion("toutiao_open_id <>", value, "toutiaoOpenId");
-            return (Criteria) this;
-        }
-
-        public Criteria andToutiaoOpenIdGreaterThan(Long value) {
-            addCriterion("toutiao_open_id >", value, "toutiaoOpenId");
-            return (Criteria) this;
-        }
-
-        public Criteria andToutiaoOpenIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("toutiao_open_id >=", value, "toutiaoOpenId");
-            return (Criteria) this;
-        }
-
-        public Criteria andToutiaoOpenIdLessThan(Long value) {
-            addCriterion("toutiao_open_id <", value, "toutiaoOpenId");
-            return (Criteria) this;
-        }
-
-        public Criteria andToutiaoOpenIdLessThanOrEqualTo(Long value) {
-            addCriterion("toutiao_open_id <=", value, "toutiaoOpenId");
-            return (Criteria) this;
-        }
-
-        public Criteria andToutiaoOpenIdIn(List<Long> values) {
-            addCriterion("toutiao_open_id in", values, "toutiaoOpenId");
-            return (Criteria) this;
-        }
-
-        public Criteria andToutiaoOpenIdNotIn(List<Long> values) {
-            addCriterion("toutiao_open_id not in", values, "toutiaoOpenId");
-            return (Criteria) this;
-        }
-
-        public Criteria andToutiaoOpenIdBetween(Long value1, Long value2) {
-            addCriterion("toutiao_open_id between", value1, value2, "toutiaoOpenId");
-            return (Criteria) this;
-        }
-
-        public Criteria andToutiaoOpenIdNotBetween(Long value1, Long value2) {
-            addCriterion("toutiao_open_id not between", value1, value2, "toutiaoOpenId");
-            return (Criteria) this;
-        }
-
         public Criteria andPasswordIsNull() {
             addCriterion("`password` is null");
             return (Criteria) this;

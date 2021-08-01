@@ -8,6 +8,8 @@
         <association property="toUser" columnPrefix="tu_" resultMap="com.acircle.circle.mapper.UserMapper.BaseResultMap">
         </association>
     </resultMap>
+    <resultMap id="CommentWithArticleInfo" type="com.acircle.circle.dto.CommentWithArticleInfo"
+               extends="com.acircle.circle.mapper.CommentMapper.BaseResultMap"></resultMap>
     <select id="getCommentDetailsByArticleId" resultMap="CommentDetail">
         SELECT
             c.id id,
@@ -26,5 +28,18 @@
             LEFT JOIN `user` tu ON c.to_user_id = tu.id
         WHERE
             a.id = #{articleId}
+    </select>
+    <select id="getComments" resultMap="CommentWithArticleInfo">
+        SELECT
+            id,
+            content,
+            article_id,
+            create_time
+        FROM
+            `comment` c
+        WHERE
+            c.from_user_id = #{userId}
+        ORDER BY id DESC
+        LIMIT #{offSet},#{limit}
     </select>
 </mapper>

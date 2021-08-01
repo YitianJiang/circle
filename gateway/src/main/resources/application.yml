@@ -6,8 +6,8 @@ spring:
       discovery:
         locator:
           enabled: true
-          lower-case-service-id: true #Ê¹ÓÃÐ¡Ð´service-id
-      routes: #ÅäÖÃÂ·ÓÉÂ·¾¶
+          lower-case-service-id: true #Ê¹ï¿½ï¿½Ð¡Ð´service-id
+      routes: #ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½Â·ï¿½ï¿½
         - id: circle-auth
           uri: lb://circle-auth
           predicates:
@@ -24,7 +24,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          jwk-set-uri: 'http://localhost:8201/circle-auth/rsa/publicKey' #ÅäÖÃRSAµÄ¹«Ô¿·ÃÎÊµØÖ·
+          jwk-set-uri: 'http://localhost:8201/circle-auth/rsa/publicKey' #ï¿½ï¿½ï¿½ï¿½RSAï¿½Ä¹ï¿½Ô¿ï¿½ï¿½ï¿½Êµï¿½Ö·
   redis:
     database: 0
     port: 6379
@@ -32,7 +32,7 @@ spring:
     password:
 secure:
   ignore:
-    urls: #ÅäÖÃ°×Ãûµ¥Â·¾¶
+    urls: #ï¿½ï¿½ï¿½Ã°ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½
       - "/doc.html"
       - "/swagger-resources/**"
       - "/swagger/**"
@@ -45,12 +45,13 @@ secure:
       - "/actuator/**"
       - "/**/oauth/token"
       - "/**/rsa/publicKey"
-      - "/**/user/login"
       - "/**/user/create"
+      - "/**/user/login"
       - "/**/user/getAuthCode"
-      - "/**/user/"
-      - "/**/article/getArticles"
-management: #¿ªÆôSpringBoot AdminµÄ¼à¿Ø
+      - "/**/article/getHomeRecommendArticles"
+      - "/**/article/getArticleDetailByArticleId/**"
+      - "/**/article/getArticlesByUserId/**"
+management: #ï¿½ï¿½ï¿½ï¿½SpringBoot Adminï¿½Ä¼ï¿½ï¿½
   endpoints:
     web:
       exposure:

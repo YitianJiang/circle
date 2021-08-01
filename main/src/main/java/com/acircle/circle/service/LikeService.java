@@ -1,7 +1,10 @@
 package com.acircle.circle.service;
 
+import com.acircle.circle.dto.LikeDetail;
 import com.acircle.circle.model.Like;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 public interface LikeService {
     /**
@@ -9,6 +12,8 @@ public interface LikeService {
      */
     @Transactional
     long create(Like like);
+
+    List<LikeDetail> getLikeDetailsByArticleId(long articleId);
 
     long delete(long id);
 

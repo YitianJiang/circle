@@ -41,66 +41,65 @@ public class ArticleController {
         }
     }
 
-    @ApiOperation("获取文章列表")
-    @RequestMapping(value = "/getArticles", method = RequestMethod.GET)
+    @ApiOperation("首页获取文章列表")
+    @RequestMapping(value = "/getHomeRecommendArticles", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<List<ArticleDetail>> getArticleDetails() {
-        List<ArticleDetail> articleDetails = articleService.getArticleDetails();
+        List<ArticleDetail> articleDetails = articleService.getHomeRecommendArticles();
+        return CommonResult.success(articleDetails);
+    }
+
+    @ApiOperation("根据文章id获取文章详情")
+    @RequestMapping(value = "/getArticleDetailByArticleId/{articleId}", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult<List<ArticleDetail>> getArticleDetailByArticleId(@PathVariable long articleId){
+        List<ArticleDetail> articleDetails = articleService.getArticleDetailByArticleId(articleId);
         return CommonResult.success(articleDetails);
     }
 
     @ApiOperation("根据用户id获取用户发表文章列表")
-    @RequestMapping(value = "/getArticles/{userId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/getArticlesByUserId/{userId}", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<List<ArticleDetail>> getArticlesByUserId(
             @PathVariable long userId,
             @RequestParam(value = "pageSize", defaultValue = "3") int pageSize,
             @RequestParam(value = "pageNum", defaultValue = "1") int pageNum) {
+        try {
+            Thread.sleep(2000);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         List<ArticleDetail> articleDetails = articleService.getArticleDetailsByUserId(userId,pageNum,pageSize);
         return CommonResult.success(articleDetails);
     }
 
     @ApiOperation("根据用户id获取用户收藏过的文章列表")
-    @RequestMapping(value = "/getArticles/bookmarked/{userId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/getArticles/bookmarked", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<List<ArticleDetail>> getUserBookmarkedArticleDetails(
-            @PathVariable long userId,
             @RequestParam(value = "pageSize", defaultValue = "3") int pageSize,
             @RequestParam(value = "pageNum", defaultValue = "1") int pageNum) {
-        List<ArticleDetail> articleDetails = articleService.getUserBookmarkedArticleDetails(userId,pageNum,pageSize);
-        return CommonResult.success(articleDetails);
-    }
-
-    @ApiOperation("根据用户id获取用户评论过的文章列表")
-    @RequestMapping(value = "/getArticles/commentted/{userId}", method = RequestMethod.GET)
-    @ResponseBody
-    public CommonResult<List<ArticleDetail>> getUserCommentedArticleDetails(
-            @PathVariable long userId,
-            @RequestParam(value = "pageSize", defaultValue = "3") int pageSize,
-            @RequestParam(value = "pageNum", defaultValue = "1") int pageNum) {
-        List<ArticleDetail> articleDetails = articleService.getUserCommentedArticleDetails(userId,pageNum,pageSize);
+        List<ArticleDetail> articleDetails = articleService.getUserBookmarkedArticleDetails(pageNum,pageSize);
         return CommonResult.success(articleDetails);
     }
 
     @ApiOperation("根据用户id获取用户点赞过的文章列表")
-    @RequestMapping(value = "/getArticles/liked/{userId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/getArticles/liked", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<List<ArticleDetail>> getUserLikedArticleDetails(
-            @PathVariable long userId,
             @RequestParam(value = "pageSize", defaultValue = "3") int pageSize,
             @RequestParam(value = "pageNum", defaultValue = "1") int pageNum) {
-        List<ArticleDetail> articleDetails = articleService.getUserLikedArticleDetails(userId,pageNum,pageSize);
+        List<ArticleDetail> articleDetails = articleService.getUserLikedArticleDetails(pageNum,pageSize);
         return CommonResult.success(articleDetails);
     }
 
     @ApiOperation("根据用户id获取用户浏览历史")
-    @RequestMapping(value = "/getArticles/browserHistory/{userId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/getArticles/browserHistory", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<List<ArticleDetail>> getBrowserHistory(
-            @PathVariable long userId,
             @RequestParam(value = "pageSize", defaultValue = "3") int pageSize,
             @RequestParam(value = "pageNum", defaultValue = "1") int pageNum) {
-        List<ArticleDetail> articleDetails = articleService.getBrowserHistory(userId,pageNum,pageSize);
+        List<ArticleDetail> articleDetails = articleService.getBrowserHistory(pageNum,pageSize);
         return CommonResult.success(articleDetails);
     }
 

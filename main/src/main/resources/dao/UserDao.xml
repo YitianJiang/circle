@@ -9,8 +9,7 @@
 		SELECT
 			u.id,
 			u.`name`,
-			u.avatar_url,
-			COUNT(f.from_user_id) fans_num
+			u.avatar_url
 		FROM
 			`user` u
 			LEFT JOIN follow f on u.id = f.to_user_id

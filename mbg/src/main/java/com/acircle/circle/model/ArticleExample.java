@@ -424,6 +424,76 @@ public class ArticleExample {
             addCriterion("create_time not between", value1, value2, "createTime");
             return (Criteria) this;
         }
+
+        public Criteria andLogoUrlIsNull() {
+            addCriterion("logo_url is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogoUrlIsNotNull() {
+            addCriterion("logo_url is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogoUrlEqualTo(String value) {
+            addCriterion("logo_url =", value, "logoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogoUrlNotEqualTo(String value) {
+            addCriterion("logo_url <>", value, "logoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogoUrlGreaterThan(String value) {
+            addCriterion("logo_url >", value, "logoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogoUrlGreaterThanOrEqualTo(String value) {
+            addCriterion("logo_url >=", value, "logoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogoUrlLessThan(String value) {
+            addCriterion("logo_url <", value, "logoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogoUrlLessThanOrEqualTo(String value) {
+            addCriterion("logo_url <=", value, "logoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogoUrlLike(String value) {
+            addCriterion("logo_url like", value, "logoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogoUrlNotLike(String value) {
+            addCriterion("logo_url not like", value, "logoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogoUrlIn(List<String> values) {
+            addCriterion("logo_url in", values, "logoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogoUrlNotIn(List<String> values) {
+            addCriterion("logo_url not in", values, "logoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogoUrlBetween(String value1, String value2) {
+            addCriterion("logo_url between", value1, value2, "logoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogoUrlNotBetween(String value1, String value2) {
+            addCriterion("logo_url not between", value1, value2, "logoUrl");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

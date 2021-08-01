@@ -1,6 +1,5 @@
 package com.acircle.circle.model;
 
-import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -12,8 +11,6 @@ public class User implements Serializable {
     private String avatarUrl;
 
     private String introduction;
-
-    private Long toutiaoOpenId;
 
     private String password;
 
@@ -57,14 +54,6 @@ public class User implements Serializable {
 
     public void setIntroduction(String introduction) {
         this.introduction = introduction;
-    }
-
-    public Long getToutiaoOpenId() {
-        return toutiaoOpenId;
-    }
-
-    public void setToutiaoOpenId(Long toutiaoOpenId) {
-        this.toutiaoOpenId = toutiaoOpenId;
     }
 
     public String getPassword() {
@@ -117,7 +106,6 @@ public class User implements Serializable {
         sb.append(", name=").append(name);
         sb.append(", avatarUrl=").append(avatarUrl);
         sb.append(", introduction=").append(introduction);
-        sb.append(", toutiaoOpenId=").append(toutiaoOpenId);
         sb.append(", password=").append(password);
         sb.append(", createTime=").append(createTime);
         sb.append(", status=").append(status);

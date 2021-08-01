@@ -1,5 +1,6 @@
 package com.acircle.circle.service;
 
+import com.acircle.circle.dto.ArticleAbstract;
 import com.acircle.circle.dto.ArticleDetail;
 import com.acircle.circle.dto.CreateArticleDto;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,15 +16,17 @@ public interface ArticleService {
 
     long delete(long id);
 
-    List<ArticleDetail> getArticleDetails();
+    List<ArticleDetail> getHomeRecommendArticles();
+
+    List<ArticleAbstract> getArticleAbstractByArticleId(long articleId);
+
+    List<ArticleDetail> getArticleDetailByArticleId(long articleId);
 
     List<ArticleDetail> getArticleDetailsByUserId(long userId, int pageNum, int pageSize);
 
-    List<ArticleDetail> getUserLikedArticleDetails(long userId, int pageNum, int pageSize);
+    List<ArticleDetail> getUserLikedArticleDetails(int pageNum, int pageSize);
 
-    List<ArticleDetail> getUserCommentedArticleDetails(long userId, int pageNum, int pageSize);
+    List<ArticleDetail> getUserBookmarkedArticleDetails(int pageNum, int pageSize);
 
-    List<ArticleDetail> getUserBookmarkedArticleDetails(long userId, int pageNum, int pageSize);
-
-    List<ArticleDetail> getBrowserHistory(long userId, int pageNum, int pageSize);
+    List<ArticleDetail> getBrowserHistory(int pageNum, int pageSize);
 }

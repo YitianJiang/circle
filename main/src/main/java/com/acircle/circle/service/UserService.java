@@ -15,6 +15,10 @@ public interface UserService {
 
     User getCurrentUser();
 
+    UserDto getCurrentUserBaseInfoByJWT();
+
+    User getUserByUserId(long userId);
+
     UserDto loadUserByUsername(String username);
 
     long update(User user);

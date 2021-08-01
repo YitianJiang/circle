@@ -9,5 +9,5 @@ feign:
   okhttp:
     enabled: true
 ribbon:
-  ConnectTimeout: 3000 #服务请求连接超时时间（毫秒）
-  ReadTimeout: 3000 #服务请求处理超时时间（毫秒）
+  ConnectTimeout: 3000 #鏈嶅姟璇锋眰杩炴帴瓒呮椂鏃堕棿锛堟绉掞級
+  ReadTimeout: 3000 #鏈嶅姟璇锋眰澶勭悊瓒呮椂鏃堕棿锛堟绉掞級

@@ -107,10 +107,10 @@
         <appender-ref ref="FILE_ERROR"/>
     </root>
 
-    <logger name="com.acircle.circle.common.log.WebLogAspect" level="DEBUG">
-        <appender-ref ref="api"/>
-    </logger>
-    <logger name="com.acircle.circle" level="DEBUG">
-        <appender-ref ref="business"/>
-    </logger>
+    <!--<logger name="com.acircle.circle.common.log.WebLogAspect" level="DEBUG">-->
+        <!--<appender-ref ref="api"/>-->
+    <!--</logger>-->
+    <!--<logger name="com.acircle.circle" level="DEBUG">-->
+        <!--<appender-ref ref="business"/>-->
+    <!--</logger>-->
 </configuration>

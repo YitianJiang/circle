@@ -1,6 +1,5 @@
 package com.acircle.circle.model;
 
-import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -14,6 +13,8 @@ public class Article implements Serializable {
     private Long userId;
 
     private Date createTime;
+
+    private String logoUrl;
 
     private static final long serialVersionUID = 1L;
 
@@ -57,6 +58,14 @@ public class Article implements Serializable {
         this.createTime = createTime;
     }
 
+    public String getLogoUrl() {
+        return logoUrl;
+    }
+
+    public void setLogoUrl(String logoUrl) {
+        this.logoUrl = logoUrl;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -68,6 +77,7 @@ public class Article implements Serializable {
         sb.append(", videoUrl=").append(videoUrl);
         sb.append(", userId=").append(userId);
         sb.append(", createTime=").append(createTime);
+        sb.append(", logoUrl=").append(logoUrl);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

@@ -7,6 +7,7 @@
     <result column="video_url" jdbcType="VARCHAR" property="videoUrl" />
     <result column="user_id" jdbcType="BIGINT" property="userId" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="logo_url" jdbcType="VARCHAR" property="logoUrl" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -67,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, `text`, video_url, user_id, create_time
+    id, `text`, video_url, user_id, create_time, logo_url
   </sql>
   <select id="selectByExample" parameterType="com.acircle.circle.model.ArticleExample" resultMap="BaseResultMap">
     select
@@ -101,9 +102,11 @@
   </delete>
   <insert id="insert" parameterType="com.acircle.circle.model.Article">
     insert into `article` (id, `text`, video_url, 
-      user_id, create_time)
+      user_id, create_time, logo_url
+      )
     values (#{id,jdbcType=BIGINT}, #{text,jdbcType=VARCHAR}, #{videoUrl,jdbcType=VARCHAR}, 
-      #{userId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP})
+      #{userId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{logoUrl,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.acircle.circle.model.Article">
     insert into `article`
@@ -123,6 +126,9 @@
       <if test="createTime != null">
         create_time,
       </if>
+      <if test="logoUrl != null">
+        logo_url,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -139,6 +145,9 @@
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logoUrl != null">
+        #{logoUrl,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -166,6 +175,9 @@
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.logoUrl != null">
+        logo_url = #{record.logoUrl,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -177,7 +189,8 @@
       `text` = #{record.text,jdbcType=VARCHAR},
       video_url = #{record.videoUrl,jdbcType=VARCHAR},
       user_id = #{record.userId,jdbcType=BIGINT},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP}
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      logo_url = #{record.logoUrl,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -197,6 +210,9 @@
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="logoUrl != null">
+        logo_url = #{logoUrl,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -205,7 +221,8 @@
     set `text` = #{text,jdbcType=VARCHAR},
       video_url = #{videoUrl,jdbcType=VARCHAR},
       user_id = #{userId,jdbcType=BIGINT},
-      create_time = #{createTime,jdbcType=TIMESTAMP}
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      logo_url = #{logoUrl,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

@@ -1,7 +1,11 @@
 package com.acircle.circle.service;
 
+import com.acircle.circle.dto.CommentDetail;
+import com.acircle.circle.dto.CommentWithArticleInfo;
 import com.acircle.circle.model.Comment;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 public interface CommentService {
     /**
@@ -9,6 +13,10 @@ public interface CommentService {
      */
     @Transactional
     long create(Comment comment);
+
+    List<CommentWithArticleInfo> getCommentWithArticleInfosByUserId(int pageNum, int pageSize);
+
+    List<CommentDetail>  getCommentDetailsByArticleId(long articleId);
 
     long delete(long id);
 
