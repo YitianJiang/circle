@@ -44,8 +44,10 @@ public class ArticleController {
     @ApiOperation("首页获取文章列表")
     @RequestMapping(value = "/getHomeRecommendArticles", method = RequestMethod.GET)
     @ResponseBody
-    public CommonResult<List<ArticleDetail>> getArticleDetails() {
-        List<ArticleDetail> articleDetails = articleService.getHomeRecommendArticles();
+    public CommonResult<List<ArticleDetail>> getHomeRecommendArticles(
+            @RequestParam(value = "pageSize", defaultValue = "5") int pageSize,
+            @RequestParam(value = "pageNum", defaultValue = "1") int pageNum) {
+        List<ArticleDetail> articleDetails = articleService.getHomeRecommendArticles(pageNum,pageSize);
         return CommonResult.success(articleDetails);
     }
 
@@ -106,7 +108,7 @@ public class ArticleController {
     @ApiOperation("删除文章")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
     @ResponseBody
-    public CommonResult DeleteeArticle(@PathVariable long id) {
+    public CommonResult DeleteArticle(@PathVariable long id) {
         long deleteResult = articleService.delete(id);
         if (deleteResult > 0) {
             return CommonResult.success(deleteResult);

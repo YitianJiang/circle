@@ -16,7 +16,7 @@ public interface ArticleService {
 
     long delete(long id);
 
-    List<ArticleDetail> getHomeRecommendArticles();
+    List<ArticleDetail> getHomeRecommendArticles(int pageNum, int pageSize);
 
     List<ArticleAbstract> getArticleAbstractByArticleId(long articleId);
 

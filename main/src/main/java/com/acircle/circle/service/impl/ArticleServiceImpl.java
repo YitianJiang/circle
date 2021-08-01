@@ -98,8 +98,8 @@ public class ArticleServiceImpl implements ArticleService{
     }
 
     @Override
-    public List<ArticleDetail> getHomeRecommendArticles(){
-        List<ArticleDetail> articleDetails = articleDao.getHomeRecommendArticlesBaseInfo();
+    public List<ArticleDetail> getHomeRecommendArticles(int pageNum, int pageSize){
+        List<ArticleDetail> articleDetails = articleDao.getHomeRecommendArticlesBaseInfo((pageNum - 1) * pageSize,pageSize);
         fillLikeCommentUserDetail(articleDetails);
         return  articleDetails;
     }

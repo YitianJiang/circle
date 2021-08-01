@@ -17,15 +17,23 @@
     </resultMap>
     <select id="getHomeRecommendArticlesBaseInfo" resultMap="ArticleDetail">
         SELECT
-            a.id id,
-            a.text text,
-            a.video_url video_url,
-            a.user_id user_id,
-            a.create_time create_time,
+            t.id id,
+            t.text text,
+            t.video_url video_url,
+            t.user_id user_id,
+            t.create_time create_time,
             i.image_url i_image_url
-        FROM
-            article a
-            LEFT JOIN image i ON a.id = i.article_id
+        FROM(
+            SELECT
+                a.id,
+                a.text,
+                a.video_url,
+                a.user_id,
+                a.create_time
+            FROM
+                article a
+            LIMIT  #{offSet},#{limit}) as t
+        LEFT JOIN image i ON t.id = i.article_id
     </select>
     <select id="getArticleAbstractByArticleId" resultMap="ArticleAbstract">
         SELECT

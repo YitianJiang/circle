@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface ArticleDao {
-    List<ArticleDetail> getHomeRecommendArticlesBaseInfo();
+    List<ArticleDetail> getHomeRecommendArticlesBaseInfo( @Param("offSet") int offSet, @Param("limit") int limit);
     List<ArticleAbstract> getArticleAbstractByArticleId(@Param("articleId") long articleId);
     List<ArticleDetail> getArticleBaseInfoByArticleId(@Param("articleId") long articleId);
     List<ArticleDetail> getArticleDetailsByUserId(@Param("userId") long userId, @Param("offSet") int offSet, @Param("limit") int limit);

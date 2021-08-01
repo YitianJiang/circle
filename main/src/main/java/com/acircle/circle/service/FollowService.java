@@ -12,10 +12,10 @@ public interface FollowService {
 
     long delete(long id);
 
-    List<FollowDetail> getPeopleIFollow();
+    List<FollowDetail> getPeopleIFollow(int pageNum, int pageSize);
 
     long getFansNum(long userId);
 
-    List<FollowDetail> getMyFans();
+    List<FollowDetail> getMyFans(int pageNum, int pageSize);
 
 }

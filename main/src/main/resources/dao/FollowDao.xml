@@ -29,6 +29,8 @@
             LEFT JOIN `user` u ON f.to_user_id = u.id
         WHERE
             f.from_user_id = #{userId}
+        ORDER BY id DESC
+        LIMIT  #{offSet},#{limit}
     </select>
     <select id="getFansNum" resultMap="fansNum">
         SELECT
@@ -49,5 +51,7 @@
             LEFT JOIN `user` u ON f.from_user_id = u.id
         WHERE
             f.to_user_id = #{userId}
+        ORDER BY f.id DESC
+        LIMIT  #{offSet},#{limit}
     </select>
 </mapper>

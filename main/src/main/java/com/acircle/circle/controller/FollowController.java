@@ -56,16 +56,20 @@ public class FollowController {
     @ApiOperation("我的关注")
     @RequestMapping(value = "/peopleIFollow", method = RequestMethod.GET)
     @ResponseBody
-    public CommonResult getFollowedPeopleByUserId() {
-        List<FollowDetail> peopleIFollow  = followService.getPeopleIFollow();
+    public CommonResult getFollowedPeopleByUserId(
+            @RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
+            @RequestParam(value = "pageNum", defaultValue = "1") int pageNum) {
+        List<FollowDetail> peopleIFollow  = followService.getPeopleIFollow(pageNum,pageSize);
         return CommonResult.success(peopleIFollow);
     }
 
     @ApiOperation("我的粉丝")
     @RequestMapping(value = "/myFans", method = RequestMethod.GET)
     @ResponseBody
-    public CommonResult getFansByUserId() {
-        List<FollowDetail> myFans = followService.getMyFans();
+    public CommonResult getFansByUserId(
+            @RequestParam(value = "pageSize", defaultValue = "5") int pageSize,
+            @RequestParam(value = "pageNum", defaultValue = "1") int pageNum) {
+        List<FollowDetail> myFans = followService.getMyFans(pageNum,pageSize);
         return CommonResult.success(myFans);
     }
 }
