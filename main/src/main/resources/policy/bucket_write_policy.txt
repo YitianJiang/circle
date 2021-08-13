@@ -1,0 +1,14 @@
+{
+  "Statement": [
+    {
+      "Action": [
+        "oss:PutObject",
+        "oss:ListParts",
+        "oss:AbortMultipartUpload"
+      ],
+      "Effect": "Allow",
+      "Resource": ["acs:oss:*:*:yitianjiang-circle/*"]
+    }
+  ],
+  "Version": "1"
+}

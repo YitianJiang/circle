@@ -135,6 +135,13 @@ public class ArticleServiceImpl implements ArticleService{
     }
 
     @Override
+    public List<ArticleDetail> getArticleDetailsByCurrentUserId(int pageNum, int pageSize){
+        List<ArticleDetail> articleDetails = articleDao.getArticleDetailsByUserId(userService.getCurrentUserBaseInfoByJWT().getId(),(pageNum - 1) * pageSize,pageSize);
+        fillLikeCommentDetail(articleDetails);
+        return  articleDetails;
+    }
+
+    @Override
     public List<ArticleDetail> getUserLikedArticleDetails(int pageNum, int pageSize){
         List<ArticleDetail> articleDetails = articleDao.getUserLikedArticleDetails(userService.getCurrentUserBaseInfoByJWT().getId(),(pageNum - 1) * pageSize,pageSize);
         fillLikeCommentDetail(articleDetails);

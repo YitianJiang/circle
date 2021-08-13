@@ -31,6 +31,7 @@
         <skipTests>true</skipTests>
         <docker.host>http://10.0.0.201:2375</docker.host>
         <docker.maven.plugin.version>1.2.2</docker.maven.plugin.version>
+        <docker-image-repository-address>registry.cn-hangzhou.aliyuncs.com/jiangyitian/aliyun-docker-image-registry</docker-image-repository-address>
 
 
         <mybatis-generator.version>1.4.0</mybatis-generator.version>
@@ -40,6 +41,9 @@
         <mysql-connector.version>8.0.20</mysql-connector.version>
         <druid.version>1.1.23</druid.version>
         <spring-data-commons.version>2.3.0.RELEASE</spring-data-commons.version>
+        <aliyun-oss-sdk.version>3.1.0</aliyun-oss-sdk.version>
+        <aliyun-java-sdk-sts.version>2.1.6</aliyun-java-sdk-sts.version>
+        <aliyun-java-sdk-core.version>2.1.7</aliyun-java-sdk-core.version>
 
         <spring-cloud.version>Hoxton.SR5</spring-cloud.version>
         <spring-cloud-alibaba.version>2.2.0.RELEASE</spring-cloud-alibaba.version>
@@ -55,8 +59,6 @@
 
         <circle-common.version>1.0.0-SNAPSHOT</circle-common.version>
         <circle-mbg.version>1.0.0-SNAPSHOT</circle-mbg.version>
-
-        <docker-image-repository-address>registry.cn-hangzhou.aliyuncs.com/jiangyitian/aliyun-docker-image-registry</docker-image-repository-address>
 
     </properties>
 
@@ -184,6 +186,17 @@
                 <groupId>org.springframework.data</groupId>
                 <artifactId>spring-data-commons</artifactId>
                 <version>${spring-data-commons.version}</version>
+            </dependency>
+            <!--阿里云sts sdk-->
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>aliyun-java-sdk-sts</artifactId>
+                <version>${aliyun-java-sdk-sts.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>aliyun-java-sdk-core</artifactId>
+                <version>${aliyun-java-sdk-core.version}</version>
             </dependency>
 
             <!--JWT(Json Web Token)登录支持-->

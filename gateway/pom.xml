@@ -80,6 +80,19 @@
 				<groupId>com.spotify</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+					<encoding>UTF-8</encoding>
+					<!-- 过滤后缀为pkcs12、jks的证书文件 -->
+					<nonFilteredFileExtensions>
+						<nonFilteredFileExtension>pfx</nonFilteredFileExtension>
+						<nonFilteredFileExtension>jks</nonFilteredFileExtension>
+					</nonFilteredFileExtensions>
+				</configuration>
+			</plugin>
+
 		</plugins>
 	</build>
 

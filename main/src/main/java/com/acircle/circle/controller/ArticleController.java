@@ -66,12 +66,17 @@ public class ArticleController {
             @PathVariable long userId,
             @RequestParam(value = "pageSize", defaultValue = "3") int pageSize,
             @RequestParam(value = "pageNum", defaultValue = "1") int pageNum) {
-        try {
-            Thread.sleep(2000);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
         List<ArticleDetail> articleDetails = articleService.getArticleDetailsByUserId(userId,pageNum,pageSize);
+        return CommonResult.success(articleDetails);
+    }
+
+    @ApiOperation("获取当前用户发表文章列表")
+    @RequestMapping(value = "/getArticlesByCurrentUserId/{userId}", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult<List<ArticleDetail>> getArticlesByCurrentUserId(
+            @RequestParam(value = "pageSize", defaultValue = "3") int pageSize,
+            @RequestParam(value = "pageNum", defaultValue = "1") int pageNum) {
+        List<ArticleDetail> articleDetails = articleService.getArticleDetailsByCurrentUserId(pageNum,pageSize);
         return CommonResult.success(articleDetails);
     }
 

@@ -24,6 +24,8 @@ public interface ArticleService {
 
     List<ArticleDetail> getArticleDetailsByUserId(long userId, int pageNum, int pageSize);
 
+    List<ArticleDetail> getArticleDetailsByCurrentUserId(int pageNum, int pageSize);
+
     List<ArticleDetail> getUserLikedArticleDetails(int pageNum, int pageSize);
 
     List<ArticleDetail> getUserBookmarkedArticleDetails(int pageNum, int pageSize);
