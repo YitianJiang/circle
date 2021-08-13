@@ -169,7 +169,9 @@
 
 ### 一、日志收集架构
 
-<img src="./resource/log-collection-architecture.jpeg"/>       <div style="text-align: center;"><p>图1 日志模块架构图<sup>[1]</sup></p></div>
+<img src="./resource/log-collection-architecture.jpeg"/>       
+
+<div style="text-align: center;">图1 日志模块架构图<sup>[1]</sup></p></div>
 
 ### 二、消息中间件选型
 
@@ -185,11 +187,9 @@
 
 ![ 目前比较活跃的几种MQ中间件产品的对比](https://img-blog.csdn.net/20170816171523564?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvb01hdmVyaWNrMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
-​											          图2 目前比较活跃的几种MQ中间件产品的对比<sup>[2]</sup>
+<div style="text-align: center;"><p> 图2 目前比较活跃的几种MQ中间件产品的对比<sup>[2]</sup></p></div>
 
 ​		从图中看到：kafka的吞吐量最高，所以用kafka。
-
-
 
 参考：
 
@@ -245,7 +245,9 @@
 
 　　又比如：
 
-​	　朋友圈的首页原型为这样：
+　　朋友圈的首页原型为这样：
+
+
 
 <div style="text-align: center;"><img src="./resource/按需返回数据-图2.png" style="zoom:100%;" /> </div>
 
