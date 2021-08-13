@@ -169,9 +169,9 @@
 
 ### 一、日志收集架构
 
-<img src="./resource/log-collection-architecture.jpeg"/>       
+<img src="./resource/log-collection-architecture.jpeg"/>        
 
-​                                                                               图1 日志模块架构图<sup>[1]</sup>
+<p align="center">图1 日志模块架构图<sup>[1]</sup></p>
 
 ### 二、消息中间件选型
 
