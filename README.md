@@ -189,7 +189,7 @@
 
 <p align="center"> 图2 目前比较活跃的几种MQ中间件产品的对比<sup>[2]</sup></p>
 
-​		从图中看到：kafka的吞吐量最高，所以用kafka。
+　　从图中看到：kafka的吞吐量最高，所以用kafka。
 
 参考：
 
