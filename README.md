@@ -169,7 +169,7 @@
 
 ### 一、日志收集架构
 
-<img src="./resource/log-collection-architecture.jpeg"/>        
+<div align="center"><img src="./resource/log-collection-architecture.jpeg"/><div>        
 
 <p align="center">图1 日志模块架构图<sup>[1]</sup></p>
 
@@ -237,7 +237,7 @@
 
 例1：
 
-<div style="text-align: center;"><img src="./resource/按需返回数据-图1.png" style="zoom:100%;" /> </div>
+<div align="center"><img src="./resource/按需返回数据-图1.png" style="zoom:100%;" /> </div>
 
 　　
 
