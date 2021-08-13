@@ -80,7 +80,7 @@
 
 [1] [MySQL 8.0: Retiring Support for the Query Cache](https://mysqlserverteam.com/mysql-8-0-retiring-support-for-the-query-cache/)
 
-[1] [MySQL查询缓存](https://cloud.tencent.com/developer/article/1579788?from=14588)
+[2] [MySQL查询缓存](https://cloud.tencent.com/developer/article/1579788?from=14588)
 
 
 
@@ -116,11 +116,11 @@
 
    缺点：
 
-   - 第三方网站假冒用户，携带用户cookie访问己方站点，从而使己方站点遭受攻击^[1]^（csrf），虽然预防csrf有很多种方案，比如验证码、加token^[2]^,但是无疑增加了前端实现复杂度。
-   - session存在服务端内存中，当用户数目多的时候，占的内存多，对服务端造成的压力大^[3]^。
+   - 第三方网站假冒用户，携带用户cookie访问己方站点，从而使己方站点遭受攻击<sup>[1]</sup>（csrf），虽然预防csrf有很多种方案，比如验证码、加token<sup>[2]</sup>,但是无疑增加了前端实现复杂度。
+   - session存在服务端内存中，当用户数目多的时候，占的内存多，对服务端造成的压力大<sup>[3]</sup>。
    - 移动端对 cookie 的支持不是很好，session又需要基于 cookie 实现。
    - 分布式架构下的session共享问题（这也不算问题，有spring-session这样的解决方案可供选择）。
-   - cors配置不能阻止csrf的发生^[4]^，虽然ajax请求有同源限制，但csrf可以通过表单提交，而不是ajax进行。
+   - cors配置不能阻止csrf的发生<sup>[4]</sup>，虽然ajax请求有同源限制，但csrf可以通过表单提交，而不是ajax进行。
 
 2. jwt
 
