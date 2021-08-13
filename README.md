@@ -10,7 +10,7 @@
 
 - 用户行为分析 
 
-  ​	用户可以发文章、给文章写评论、给文章点赞、给评论点赞、回复评论。
+  用户可以发文章、给文章写评论、给文章点赞、给评论点赞、回复评论。
 
 - 设计原则
   从最细粒度的表开始设计，因为你想想，如果从最宏观的用户表开始设计，改如何设计，根本就没法设计，表的设计应该是从下往上的。
@@ -19,14 +19,17 @@
 
 #### 表字段的确定
 
-​	任何一张表均由两部分构成：这张表所要表达的内容、这张表和其他表的关系，既然从第二层开始设计，咱们就开始一张一张的来。
+　　任何一张表均由两部分构成：这张表所要表达的内容、这张表和其他表的关系，既然从第二层开始设计，咱们就开始一张一张的来。
 
 - article表
-      要表达的内容：文章的内容
+
+  　要表达的内容：文章的内容
       和其他表的关系：一篇文章属于某个用户，所以这里新建user_id字段用来表示这篇文章是哪一个用户发的
+
 - comment表：
       要表达的内容: 谁对谁进行评论，这就需要from_user_id、to_user_id、content三个字段,这里to_user_id如果为null就是对文章本身进行评论
       和其他表的关系: 评论是对文章的的评论，新建article_id字段用来表示这段评论属于哪一篇文章
+
 - like表:
       要表达的内容:无 这里没有什么内容要表达，因为，从界面上来说没有要显示的内容，上面的article表和comment表都有要显示的内容
       和其他表的关系：某人对某篇文章或者某条评论进行了点赞，所以新建user_id、article_id、comment_id三个字段来得知：是谁进行了点赞，是对哪一篇文章进行了点赞或者对哪一个评论进行了点赞
@@ -41,19 +44,19 @@
 
 #### 主键选取
 
- 	id不使用数据库自增id，当业务数据增长到一定程度的时候，为了保证数据库的查询性能，将会面临分库分表，这时如果使用的是数据库的自增id，将会导致id重复，因此寻找一个全局唯一、趋势递增的id是有必要的。
+　　id不使用数据库自增id，当业务数据增长到一定程度的时候，为了保证数据库的查询性能，将会面临分库分表，这时如果使用的是数据库的自增id，将会导致id重复，因此寻找一个全局唯一、趋势递增的id是有必要的。
 
-​	这里使用的是leaf，并对其进行了rpc调用改造。
+​	　这里使用的是leaf，并对其进行了rpc调用改造。
 
-​	leaf地址：https://github.com/Meituan-Dianping/Leaf
+　　leaf地址：https://github.com/Meituan-Dianping/Leaf
 
-​	leaf官方设计文档：https://tech.meituan.com/2017/04/21/mt-leaf.html
+　　leaf官方设计文档：https://tech.meituan.com/2017/04/21/mt-leaf.html
 
 
 
 #### 查询优化
 
-​	参照 阿里巴巴java开发手册 索引规范：https://blog.csdn.net/qq_28959087/article/details/103555362 对查询进行了优化
+　　参照 阿里巴巴java开发手册 索引规范：https://blog.csdn.net/qq_28959087/article/details/103555362 对查询进行了优化
 
 
 
@@ -124,10 +127,9 @@
    优点:
 
    - 针对上面第一条缺点：不使用cookie，不用担心csrf。
-
-- 针对上面第二条缺点：自包含了用户的信息（包括用户名，用户拥有的权限等）和对用户信息的签名，不需要访问数据库，可以减轻对数据库的压力。
-  - 针对上面第三条缺点：移动端常使用jwt。
-  - 针对上面第四条缺点： jwt存在客户端，不存在服务端共享问题。
+   - 针对上面第二条缺点：自包含了用户的信息（包括用户名，用户拥有的权限等）和对用户信息的签名，不需要访问数据库，可以减轻对数据库的压力。
+   - 针对上面第三条缺点：移动端常使用jwt。
+   - 针对上面第四条缺点： jwt存在客户端，不存在服务端共享问题。
 
 **这里选择使用jwt来做授权和认证**
 
@@ -162,7 +164,7 @@
 
 ### 一、日志收集架构
 
-![日志收集架构](https://yqfile.alicdn.com/2a7721fc3dbe3fdf08ebb202f9f9faf058e396f6.jpeg)
+![日志收集架构](https://yitianjiang-circle.oss-cn-beijing.aliyuncs.com/ReadMeImages/%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86%E6%9E%B6%E6%9E%84.jpeg)
 
 ​																			图1 日志模块架构图<sup>[1]</sup>
 
@@ -230,7 +232,11 @@
 
 #### 按需返回数据
 
-##### **例1：![Snipaste_2021-07-17_01-36-18](E:\circle\typora-pic\Snipaste_2021-07-17_01-36-18.png)**
+例1：
+
+<div style="text-align: center;"><img src="https://yitianjiang-circle.oss-cn-beijing.aliyuncs.com/ReadMeImages/%E6%8C%89%E9%9C%80%E8%BF%94%E5%9B%9E%E6%95%B0%E6%8D%AE-%E5%9B%BE1.png" style="zoom:100%;" /> </div>
+
+　　
 
 　　这里只需要获取用户名、文章内容和logo就够，不需要把文章的点赞和评论信息也返回，这些信息等用户点进文章详情页再返回。
 
@@ -238,7 +244,9 @@
 
 ​	　朋友圈的首页原型为这样：
 
-![Snipaste_2021-07-17_01-58-34](E:\circle\typora-pic\Snipaste_2021-07-17_01-58-34.png)
+<div style="text-align: center;"><img src="https://yitianjiang-circle.oss-cn-beijing.aliyuncs.com/ReadMeImages/%E6%8C%89%E9%9C%80%E8%BF%94%E5%9B%9E%E6%95%B0%E6%8D%AE-%E5%9B%BE2.png" style="zoom:100%;" /> </div>
+
+　　
 
 　　这个时候需要把文章信息连同评论和点赞信息在一个接口里面返回。
 
