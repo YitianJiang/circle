@@ -171,7 +171,7 @@
 
 <img src="./resource/log-collection-architecture.jpeg"/>       
 
-<div style="text-align: center;">图1 日志模块架构图<sup>[1]</sup></p></div>
+<center>图1 日志模块架构图<sup>[1]</sup></center>
 
 ### 二、消息中间件选型
 
@@ -187,7 +187,7 @@
 
 ![ 目前比较活跃的几种MQ中间件产品的对比](https://img-blog.csdn.net/20170816171523564?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvb01hdmVyaWNrMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
-<div style="text-align: center;"><p> 图2 目前比较活跃的几种MQ中间件产品的对比<sup>[2]</sup></p></div>
+<center> 图2 目前比较活跃的几种MQ中间件产品的对比<sup>[2]</sup></center>
 
 ​		从图中看到：kafka的吞吐量最高，所以用kafka。
 
