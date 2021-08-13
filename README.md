@@ -185,9 +185,9 @@
 
   下面引用一张“目前比较活跃的几种MQ中间件产品的对比”
 
-![ 目前比较活跃的几种MQ中间件产品的对比](https://img-blog.csdn.net/20170816171523564?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvb01hdmVyaWNrMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![ 目前比较活跃的几种MQ中间件产品的对比](https://img-blog.csdn.net/20170816171523564?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvb01hdmVyaWNrMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)                       
 
-​                                                  图2 目前比较活跃的几种MQ中间件产品的对比<sup>[2]</sup>
+<p align="center"> 图2 目前比较活跃的几种MQ中间件产品的对比<sup>[2]</sup></p>
 
 ​		从图中看到：kafka的吞吐量最高，所以用kafka。
 
