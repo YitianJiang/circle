@@ -169,7 +169,7 @@
 
 ### 一、日志收集架构
 
-<img src="https://yitianjiang-circle.oss-cn-beijing.aliyuncs.com/ReadMeImages/log-collection-architecture.jpeg"/> 
+<img src="./resource/log-collection-architecture.jpeg"/> 
 
 ​																			图1 日志模块架构图<sup>[1]</sup>
 
@@ -239,7 +239,7 @@
 
 例1：
 
-<div style="text-align: center;"><img src="https://yitianjiang-circle.oss-cn-beijing.aliyuncs.com/ReadMeImages/%E6%8C%89%E9%9C%80%E8%BF%94%E5%9B%9E%E6%95%B0%E6%8D%AE-%E5%9B%BE1.png" style="zoom:100%;" /> </div>
+<div style="text-align: center;"><img src="./resource/按需返回数据-图1.png" style="zoom:100%;" /> </div>
 
 　　
 
@@ -249,7 +249,7 @@
 
 ​	　朋友圈的首页原型为这样：
 
-<div style="text-align: center;"><img src="https://yitianjiang-circle.oss-cn-beijing.aliyuncs.com/ReadMeImages/%E6%8C%89%E9%9C%80%E8%BF%94%E5%9B%9E%E6%95%B0%E6%8D%AE-%E5%9B%BE2.png" style="zoom:100%;" /> </div>
+<div style="text-align: center;"><img src="./resource/按需返回数据-图2.png" style="zoom:100%;" /> </div>
 
 　　
 
@@ -279,7 +279,7 @@
             "createTime":"",
             "user":{  //发表这篇文章的用户相关信息
             	"id":"" ,  
-            	“name”:"", 
+            	"name":"", 
             	"avatarUrl":"" 
             },
             "likes":[
