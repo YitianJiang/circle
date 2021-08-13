@@ -249,7 +249,7 @@
 
 
 
-<div style="text-align: center;"><img src="./resource/按需返回数据-图2.png" style="zoom:100%;" /> </div>
+<div align="center"><img src="./resource/按需返回数据-图2.png" style="zoom:100%;" /> </div>
 
 　　
 
