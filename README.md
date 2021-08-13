@@ -161,7 +161,7 @@
 #### 前端
 
 - 因为短信签名申请需要申请人是公司主体，验证码发不了了，这块暂时不做。暂时只做账号密码登录。
-- 使用**[ wxMiniStore](https://github.com/xiaoyao96/wxMiniStore)**这个状态管理工具管理用户登录之后的个人信息
+- 使用[ wxMiniStore](https://github.com/xiaoyao96/wxMiniStore)这个状态管理工具管理用户登录之后的个人信息
 
 
 
