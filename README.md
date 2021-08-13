@@ -169,7 +169,7 @@
 
 ### 一、日志收集架构
 
-![日志收集架构](https://yitianjiang-circle.oss-cn-beijing.aliyuncs.com/ReadMeImages/%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86%E6%9E%B6%E6%9E%84.jpeg)
+<img src="https://yitianjiang-circle.oss-cn-beijing.aliyuncs.com/ReadMeImages/%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86%E6%9E%B6%E6%9E%84.jpeg"/> 
 
 ​																			图1 日志模块架构图<sup>[1]</sup>
 
