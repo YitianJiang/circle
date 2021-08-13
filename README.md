@@ -54,13 +54,11 @@
 
 　　id不使用数据库自增id，当业务数据增长到一定程度的时候，为了保证数据库的查询性能，将会面临分库分表，这时如果使用的是数据库的自增id，将会导致id重复，因此寻找一个全局唯一、趋势递增的id是有必要的。
 
-​	　这里使用的是leaf，并对其进行了rpc调用改造。
+　　这里使用的是leaf，并对其进行了rpc调用改造。
 
 　　leaf地址：https://github.com/Meituan-Dianping/Leaf
 
 　　leaf官方设计文档：https://tech.meituan.com/2017/04/21/mt-leaf.html
-
-
 
 #### 查询优化
 
