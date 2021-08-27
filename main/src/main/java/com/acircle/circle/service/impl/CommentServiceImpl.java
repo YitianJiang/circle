@@ -49,7 +49,7 @@ public class CommentServiceImpl implements CommentService{
 
     @Override
     public  List<CommentDetail>  getCommentDetailsByArticleId(long articleId, int pageNum, int pageSize){
-        List<CommentDetail> commentDetailsByArticleId = commentDao.getCommentDetailsByArticleId(articleId, pageNum, pageSize);
+        List<CommentDetail> commentDetailsByArticleId = commentDao.getCommentDetailsByArticleId(articleId, (pageNum - 1) * pageSize, pageSize);
         if(commentDetailsByArticleId.size() == 1 && commentDetailsByArticleId.get(0) == null){
             commentDetailsByArticleId.remove(0);
         }

@@ -30,7 +30,7 @@ public class LikeServiceImpl implements LikeService{
 
     @Override
     public List<LikeDetail> getLikeDetailsByArticleId(long articleId, int pageNum, int pageSize){
-        List<LikeDetail> likeDetailsByArticleId = likeDao.getLikeDetailsByArticleId(articleId,pageNum,pageSize);
+        List<LikeDetail> likeDetailsByArticleId = likeDao.getLikeDetailsByArticleId(articleId,(pageNum - 1) * pageSize,pageSize);
         //即便查出来的记录数为空，mybatis还是会填充一个null到集合里，此时要去掉null
         if(likeDetailsByArticleId.size() == 1 && likeDetailsByArticleId.get(0) == null){
             likeDetailsByArticleId.remove(0);
