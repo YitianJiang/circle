@@ -56,6 +56,8 @@ secure:
       - "/**/article/getHomeRecommendArticles"
       - "/**/article/getArticleDetailByArticleId/**"
       - "/**/article/getArticlesByUserId/**"
+      - "/**/comment/getByArticleId/**"
+      - "/**/like/get/**"
       - "/**/oss/getALiYunOSSToken"
 management: #开启SpringBoot Admin的监控
   endpoints:

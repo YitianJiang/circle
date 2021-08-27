@@ -1,6 +1,7 @@
 package com.acircle.circle.controller;
 
 import com.acircle.circle.common.api.CommonResult;
+import com.acircle.circle.dto.LikeDetail;
 import com.acircle.circle.model.Like;
 import com.acircle.circle.service.LikeService;
 import com.alibaba.dubbo.config.annotation.Reference;
@@ -12,6 +13,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @Api(tags = "LikeController", description = "赞管理")
@@ -48,5 +51,16 @@ public class LikeController {
         } else {
             return CommonResult.failed();
         }
+    }
+
+    @ApiOperation("根据文章id分页获取文章的赞")
+    @RequestMapping(value = "/get/{articleId}", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult GetCommentDetailsByArticleId(
+            @PathVariable long articleId,
+            @RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
+            @RequestParam(value = "pageSize", defaultValue = "5") int pageSize) {
+        List<LikeDetail> likeDetails = likeService.getLikeDetailsByArticleId(articleId,pageNum,pageSize);
+        return CommonResult.success(likeDetails);
     }
 }

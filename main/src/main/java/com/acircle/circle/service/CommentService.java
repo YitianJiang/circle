@@ -16,8 +16,11 @@ public interface CommentService {
 
     List<CommentWithArticleInfo> getCommentWithArticleInfosByUserId(int pageNum, int pageSize);
 
-    List<CommentDetail>  getCommentDetailsByArticleId(long articleId);
+    List<CommentDetail>  getCommentDetailsByArticleId(long articleId, int pageNum, int pageSize);
 
     long delete(long id);
 
+    long batchDelete(List<Long> commentIds);
+
+    long deleteAll();
 }

@@ -42,6 +42,7 @@
     </select>
     <select id="getMyFans" resultMap="FollowDetail">
         SELECT
+            f.id id,
             u.id fu_id,
             u.avatar_url fu_avatar_url,
             u.`name` fu_name,

@@ -82,6 +82,7 @@
                 article a
                 LEFT JOIN `user` u ON a.user_id = u.id
             WHERE u.id = #{userId}
+            ORDER BY a.id DESC
             LIMIT  #{offSet},#{limit})  AS t
         LEFT JOIN image i ON t.id = i.article_id
     </select>

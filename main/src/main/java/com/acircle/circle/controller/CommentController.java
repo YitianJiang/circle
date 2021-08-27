@@ -1,6 +1,7 @@
 package com.acircle.circle.controller;
 
 import com.acircle.circle.common.api.CommonResult;
+import com.acircle.circle.dto.CommentDetail;
 import com.acircle.circle.dto.CommentWithArticleInfo;
 import com.acircle.circle.model.Comment;
 import com.acircle.circle.service.CommentService;
@@ -30,6 +31,7 @@ public class CommentController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult Create(@RequestBody Comment comment) {
+        if(comment.getContent() == "") return CommonResult.failed("评论内容不能为空");
         Result result = snowflakeService.getId("normal");
         if(result.getStatus() == Status.EXCEPTION) return CommonResult.failed();
         comment.setId(result.getId());
@@ -42,7 +44,7 @@ public class CommentController {
     }
 
     @ApiOperation("根据用户id获取用户评论列表")
-    @RequestMapping(value = "/get", method = RequestMethod.GET)
+    @RequestMapping(value = "/getByUserId", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult GetCommentsByUserId(
             @RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
@@ -51,11 +53,46 @@ public class CommentController {
         return CommonResult.success(commentWithArticleInfos);
     }
 
+    @ApiOperation("根据文章id分页获取文章评论")
+    @RequestMapping(value = "/getByArticleId/{articleId}", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult GetCommentDetailsByArticleId(
+            @PathVariable long articleId,
+            @RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
+            @RequestParam(value = "pageSize", defaultValue = "5") int pageSize) {
+        List<CommentDetail> commentDetails = commentService.getCommentDetailsByArticleId(articleId,pageNum,pageSize);
+        return CommonResult.success(commentDetails);
+    }
+
     @ApiOperation("删除评论")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
     @ResponseBody
     public CommonResult Delete(@PathVariable long id) {
         long deleteResult = commentService.delete(id);
+        if (deleteResult > 0) {
+            return CommonResult.success(deleteResult);
+        } else {
+            return CommonResult.failed();
+        }
+    }
+
+    @ApiOperation("批量删除评论")
+    @RequestMapping(value = "/delete/batch", method = RequestMethod.DELETE)
+    @ResponseBody
+    public CommonResult BatchDelete(@RequestBody List<Long> ids) {
+        long deleteResult = commentService.batchDelete(ids);
+        if (deleteResult > 0) {
+            return CommonResult.success(deleteResult);
+        } else {
+            return CommonResult.failed();
+        }
+    }
+
+    @ApiOperation("删除所有评论")
+    @RequestMapping(value = "/delete/all", method = RequestMethod.DELETE)
+    @ResponseBody
+    public CommonResult DeleteAll() {
+        long deleteResult = commentService.deleteAll();
         if (deleteResult > 0) {
             return CommonResult.success(deleteResult);
         } else {

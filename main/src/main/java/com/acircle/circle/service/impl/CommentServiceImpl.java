@@ -48,8 +48,8 @@ public class CommentServiceImpl implements CommentService{
     }
 
     @Override
-    public  List<CommentDetail>  getCommentDetailsByArticleId(long articleId){
-        List<CommentDetail> commentDetailsByArticleId = commentDao.getCommentDetailsByArticleId(articleId);
+    public  List<CommentDetail>  getCommentDetailsByArticleId(long articleId, int pageNum, int pageSize){
+        List<CommentDetail> commentDetailsByArticleId = commentDao.getCommentDetailsByArticleId(articleId, pageNum, pageSize);
         if(commentDetailsByArticleId.size() == 1 && commentDetailsByArticleId.get(0) == null){
             commentDetailsByArticleId.remove(0);
         }
@@ -60,6 +60,20 @@ public class CommentServiceImpl implements CommentService{
     public long delete(long id){
         CommentExample commentExample = new CommentExample();
         commentExample.createCriteria().andIdEqualTo(id).andFromUserIdEqualTo(userService.getCurrentUserBaseInfoByJWT().getId());
+        return commentMapper.deleteByExample(commentExample);
+    }
+
+    @Override
+    public long batchDelete(List<Long> commentIds){
+        CommentExample commentExample = new CommentExample();
+        commentExample.createCriteria().andIdIn(commentIds).andFromUserIdEqualTo(userService.getCurrentUserBaseInfoByJWT().getId());
+        return commentMapper.deleteByExample(commentExample);
+    }
+
+    @Override
+    public long deleteAll(){
+        CommentExample commentExample = new CommentExample();
+        commentExample.createCriteria().andFromUserIdEqualTo(userService.getCurrentUserBaseInfoByJWT().getId());
         return commentMapper.deleteByExample(commentExample);
     }
 }

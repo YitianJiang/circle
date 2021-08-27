@@ -13,7 +13,7 @@ public interface LikeService {
     @Transactional
     long create(Like like);
 
-    List<LikeDetail> getLikeDetailsByArticleId(long articleId);
+    List<LikeDetail> getLikeDetailsByArticleId(long articleId, int pageNum, int pageSize);
 
     long delete(long id);
 

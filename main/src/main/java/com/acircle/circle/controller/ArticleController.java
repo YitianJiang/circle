@@ -71,7 +71,7 @@ public class ArticleController {
     }
 
     @ApiOperation("获取当前用户发表文章列表")
-    @RequestMapping(value = "/getArticlesByCurrentUserId/{userId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/getArticlesByCurrentUserId", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<List<ArticleDetail>> getArticlesByCurrentUserId(
             @RequestParam(value = "pageSize", defaultValue = "3") int pageSize,

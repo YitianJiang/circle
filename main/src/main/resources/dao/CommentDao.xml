@@ -12,9 +12,9 @@
                extends="com.acircle.circle.mapper.CommentMapper.BaseResultMap"></resultMap>
     <select id="getCommentDetailsByArticleId" resultMap="CommentDetail">
         SELECT
-            c.id id,
-            c.content content,
-            c.create_time create_time,
+            c.id,
+            c.content,
+            c.create_time,
             fu.id fu_id,
             fu.`name` fu_name,
             fu.avatar_url fu_avatar_url,
@@ -22,12 +22,13 @@
             tu.`name` tu_name,
             tu.avatar_url tu_avatar_url
         FROM
-            article a
-            LEFT JOIN `comment` c ON a.id = c.article_id
+            `comment` c
             LEFT JOIN `user` fu ON c.from_user_id = fu.id
             LEFT JOIN `user` tu ON c.to_user_id = tu.id
         WHERE
-            a.id = #{articleId}
+            c.article_id = #{articleId}
+        ORDER BY c.id ASC
+        LIMIT #{offSet},#{limit}
     </select>
     <select id="getComments" resultMap="CommentWithArticleInfo">
         SELECT

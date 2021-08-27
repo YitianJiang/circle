@@ -13,10 +13,11 @@
             u.`name` u_name,
             u.avatar_url u_avatar_url
         FROM
-            article a
-            LEFT JOIN `like` l ON a.id = l.article_id
+            `like` l
             LEFT JOIN `user` u ON l.user_id = u.id
         WHERE
-            a.id = #{articleId}
+            l.article_id = #{articleId}
+        ORDER BY l.id ASC
+        LIMIT  #{offSet},#{limit})
     </select>
 </mapper>

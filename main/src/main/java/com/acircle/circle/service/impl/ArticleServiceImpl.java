@@ -83,10 +83,10 @@ public class ArticleServiceImpl implements ArticleService{
 
     public void fillLikeCommentUserDetail(List<ArticleDetail> articleDetails){
         for( ArticleDetail articleDetail : articleDetails){
-            //填充点赞详情
-            articleDetail.setLikeDetails(likeService.getLikeDetailsByArticleId(articleDetail.getId()));
-            //填充评论详情
-            articleDetail.setCommentDetails(commentService.getCommentDetailsByArticleId(articleDetail.getId()));
+            //填充点赞详情 默认获取第一页
+            articleDetail.setLikeDetails(likeService.getLikeDetailsByArticleId(articleDetail.getId(),1,5));
+            //填充评论详情 默认获取第一页
+            articleDetail.setCommentDetails(commentService.getCommentDetailsByArticleId(articleDetail.getId(),1,5));
             //填充用户详情
             User user = userService.getUserByUserId(articleDetail.getUserId());
             UserDetail userDetail = new UserDetail();
@@ -119,10 +119,10 @@ public class ArticleServiceImpl implements ArticleService{
 
     public void fillLikeCommentDetail(List<ArticleDetail> articleDetails){
         for( ArticleDetail articleDetail : articleDetails){
-            //填充点赞详情
-            articleDetail.setLikeDetails(likeService.getLikeDetailsByArticleId(articleDetail.getId()));
-            //填充评论详情
-            articleDetail.setCommentDetails(commentService.getCommentDetailsByArticleId(articleDetail.getId()));
+            //填充点赞详情 默认获取第一页
+            articleDetail.setLikeDetails(likeService.getLikeDetailsByArticleId(articleDetail.getId(),1,5));
+            //填充评论详情 默认获取第一页
+            articleDetail.setCommentDetails(commentService.getCommentDetailsByArticleId(articleDetail.getId(),1,5));
         }
     }
 

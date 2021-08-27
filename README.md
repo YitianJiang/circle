@@ -528,12 +528,22 @@
 
 #### 根据用户id获取用户评论列表
 
-请求URL：{{baseUrl}}/comment/get
+请求URL：{{baseUrl}}/comment/getByUserId
 
 请求方式：GET
 
 请求header：
 	Authorization: Bearer {jwt}
+
+返回值：
+
+
+
+#### 根据文章id分页获取文章评论
+
+请求URL：{{baseUrl}}/comment/getByArticleId/{articleId}
+
+请求方式：GET
 
 返回值：
 
@@ -560,7 +570,65 @@
 
 
 
+#### ~~批量删除评论~~
+
+请求URL：`{{baseUrl}}/comment/delete/batch`
+
+请求方式：DELETE
+
+请求header：
+	Authorization: Bearer {jwt}
+
+请求body：
+
+``` json
+[1,2,3] //被删除评论的id
+```
+
+返回值：
+
+```json
+{
+    "code": 200,
+    "message": "操作成功",
+    "data": 1 //被删除评论的个数
+}
+```
+
+
+
+#### ~~删除所有评论~~
+
+请求URL：`{{baseUrl}}/comment/delete/all`
+
+请求方式：DELETE
+
+请求header：
+	Authorization: Bearer {jwt}
+
+返回值：
+
+```json
+{
+    "code": 200,
+    "message": "操作成功",
+    "data": 1 //被删除评论的个数
+}
+```
+
+
+
 ### 赞管理
+
+#### 根据文章id分页获取文章的赞
+
+请求URL：{{baseUrl}}/like/get/{articleId}
+
+请求方式：GET
+
+返回值：
+
+
 
 #### ~~点赞~~
 
