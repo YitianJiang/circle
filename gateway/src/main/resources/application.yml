@@ -25,6 +25,12 @@ spring:
             - Path=/circle-main/**
           filters:
             - StripPrefix=1
+        - id: circle-search
+          uri: lb:http://circle-search
+          predicates:
+            - Path=/circle-search/**
+          filters:
+            - StripPrefix=1
   security:
     oauth2:
       resourceserver:
@@ -59,6 +65,7 @@ secure:
       - "/**/comment/getByArticleId/**"
       - "/**/like/get/**"
       - "/**/oss/getALiYunOSSToken"
+      - "/**/esArticle/search"
 management: #开启SpringBoot Admin的监控
   endpoints:
     web:

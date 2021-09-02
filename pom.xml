@@ -15,6 +15,7 @@
         <module>main</module>
         <module>auth</module>
         <module>gateway</module>
+        <module>search</module>
     </modules>
 
     <parent>
@@ -211,12 +212,7 @@
                 <artifactId>nimbus-jose-jwt</artifactId>
                 <version>${nimbus-jose-jwt.version}</version>
             </dependency>
-            <!-- 阿里云OSS -->
-            <!--<dependency>-->
-            <!--<groupId>com.aliyun.oss</groupId>-->
-            <!--<artifactId>aliyun-sdk-oss</artifactId>-->
-            <!--<version>${aliyun-oss.version}</version>-->
-            <!--</dependency>-->
+
             <!--集成logstash-->
             <dependency>
                 <groupId>net.logstash.logback</groupId>
@@ -229,12 +225,6 @@
                 <artifactId>spring-boot-admin-starter-server</artifactId>
                 <version>${admin-starter-server.version}</version>
             </dependency>
-            <!--MinIO JAVA SDK-->
-            <!--<dependency>-->
-            <!--<groupId>io.minio</groupId>-->
-            <!--<artifactId>minio</artifactId>-->
-            <!--<version>${minio.version}</version>-->
-            <!--</dependency>-->
 
             <!--dubbo-->
             <dependency>
