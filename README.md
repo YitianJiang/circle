@@ -4,6 +4,8 @@
 
 [系统架构](#系统架构)
 
+[部署](#部署)
+
 [接口文档](#接口文档)
 
 # 业务架构
@@ -204,6 +206,15 @@
 [1] [SpringBoot+kafka+ELK分布式日志收集](https://www.cnblogs.com/niechen/p/10149962.html)
 
 [2] [MQ选型对比RabbitMQ RocketMQ ActiveMQ](https://blog.csdn.net/a519781181/article/details/79005206)
+
+
+
+# 部署
+
+```shell
+cd ~ && git clone https://github.com/YitianJiang/system-install-and-config.git
+bash system-install-and-config/circle/circle-env-config-v2.sh
+```
 
 
 
