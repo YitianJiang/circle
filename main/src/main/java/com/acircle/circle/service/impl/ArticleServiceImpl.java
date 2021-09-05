@@ -83,10 +83,10 @@ public class ArticleServiceImpl implements ArticleService{
 
     public void fillLikeCommentUserDetail(List<ArticleDetail> articleDetails){
         for( ArticleDetail articleDetail : articleDetails){
-            //填充点赞详情 默认获取第一页
-            articleDetail.setLikeDetails(likeService.getLikeDetailsByArticleId(articleDetail.getId(),1,5));
-            //填充评论详情 默认获取第一页
-            articleDetail.setCommentDetails(commentService.getCommentDetailsByArticleId(articleDetail.getId(),1,5));
+            //填充点赞详情 默认获取第0页
+            articleDetail.setLikeDetails(likeService.getLikeDetailsByArticleId(articleDetail.getId(),0,5));
+            //填充评论详情 默认获取第0页
+            articleDetail.setCommentDetails(commentService.getCommentDetailsByArticleId(articleDetail.getId(),0,5));
             //填充用户详情
             User user = userService.getUserByUserId(articleDetail.getUserId());
             UserDetail userDetail = new UserDetail();
@@ -99,7 +99,7 @@ public class ArticleServiceImpl implements ArticleService{
 
     @Override
     public List<ArticleDetail> getHomeRecommendArticles(int pageNum, int pageSize){
-        List<ArticleDetail> articleDetails = articleDao.getHomeRecommendArticlesBaseInfo((pageNum) * pageSize,pageSize);
+        List<ArticleDetail> articleDetails = articleDao.getHomeRecommendArticlesBaseInfo(pageNum * pageSize,pageSize);
         fillLikeCommentUserDetail(articleDetails);
         return  articleDetails;
     }
@@ -119,10 +119,10 @@ public class ArticleServiceImpl implements ArticleService{
 
     public void fillLikeCommentDetail(List<ArticleDetail> articleDetails){
         for( ArticleDetail articleDetail : articleDetails){
-            //填充点赞详情 默认获取第一页
-            articleDetail.setLikeDetails(likeService.getLikeDetailsByArticleId(articleDetail.getId(),1,5));
-            //填充评论详情 默认获取第一页
-            articleDetail.setCommentDetails(commentService.getCommentDetailsByArticleId(articleDetail.getId(),1,5));
+            //填充点赞详情 默认获取第0页
+            articleDetail.setLikeDetails(likeService.getLikeDetailsByArticleId(articleDetail.getId(),0,5));
+            //填充评论详情 默认获取第0页
+            articleDetail.setCommentDetails(commentService.getCommentDetailsByArticleId(articleDetail.getId(),0,5));
         }
     }
 

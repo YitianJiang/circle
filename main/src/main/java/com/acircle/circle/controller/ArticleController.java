@@ -46,7 +46,7 @@ public class ArticleController {
     @ResponseBody
     public CommonResult<List<ArticleDetail>> getHomeRecommendArticles(
             @RequestParam(value = "pageSize", defaultValue = "5") int pageSize,
-            @RequestParam(value = "pageNum", defaultValue = "1") int pageNum) {
+            @RequestParam(value = "pageNum", defaultValue = "0") int pageNum) {
         List<ArticleDetail> articleDetails = articleService.getHomeRecommendArticles(pageNum,pageSize);
         return CommonResult.success(articleDetails);
     }
@@ -65,7 +65,7 @@ public class ArticleController {
     public CommonResult<List<ArticleDetail>> getArticlesByUserId(
             @PathVariable long userId,
             @RequestParam(value = "pageSize", defaultValue = "3") int pageSize,
-            @RequestParam(value = "pageNum", defaultValue = "1") int pageNum) {
+            @RequestParam(value = "pageNum", defaultValue = "0") int pageNum) {
         List<ArticleDetail> articleDetails = articleService.getArticleDetailsByUserId(userId,pageNum,pageSize);
         return CommonResult.success(articleDetails);
     }
@@ -75,7 +75,7 @@ public class ArticleController {
     @ResponseBody
     public CommonResult<List<ArticleDetail>> getArticlesByCurrentUserId(
             @RequestParam(value = "pageSize", defaultValue = "3") int pageSize,
-            @RequestParam(value = "pageNum", defaultValue = "1") int pageNum) {
+            @RequestParam(value = "pageNum", defaultValue = "0") int pageNum) {
         List<ArticleDetail> articleDetails = articleService.getArticleDetailsByCurrentUserId(pageNum,pageSize);
         return CommonResult.success(articleDetails);
     }
@@ -85,7 +85,7 @@ public class ArticleController {
     @ResponseBody
     public CommonResult<List<ArticleDetail>> getUserBookmarkedArticleDetails(
             @RequestParam(value = "pageSize", defaultValue = "3") int pageSize,
-            @RequestParam(value = "pageNum", defaultValue = "1") int pageNum) {
+            @RequestParam(value = "pageNum", defaultValue = "0") int pageNum) {
         List<ArticleDetail> articleDetails = articleService.getUserBookmarkedArticleDetails(pageNum,pageSize);
         return CommonResult.success(articleDetails);
     }
@@ -95,7 +95,7 @@ public class ArticleController {
     @ResponseBody
     public CommonResult<List<ArticleDetail>> getUserLikedArticleDetails(
             @RequestParam(value = "pageSize", defaultValue = "3") int pageSize,
-            @RequestParam(value = "pageNum", defaultValue = "1") int pageNum) {
+            @RequestParam(value = "pageNum", defaultValue = "0") int pageNum) {
         List<ArticleDetail> articleDetails = articleService.getUserLikedArticleDetails(pageNum,pageSize);
         return CommonResult.success(articleDetails);
     }
@@ -105,7 +105,7 @@ public class ArticleController {
     @ResponseBody
     public CommonResult<List<ArticleDetail>> getBrowserHistory(
             @RequestParam(value = "pageSize", defaultValue = "3") int pageSize,
-            @RequestParam(value = "pageNum", defaultValue = "1") int pageNum) {
+            @RequestParam(value = "pageNum", defaultValue = "0") int pageNum) {
         List<ArticleDetail> articleDetails = articleService.getBrowserHistory(pageNum,pageSize);
         return CommonResult.success(articleDetails);
     }

@@ -58,7 +58,7 @@ public class FollowController {
     @ResponseBody
     public CommonResult getFollowedPeopleByUserId(
             @RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
-            @RequestParam(value = "pageNum", defaultValue = "1") int pageNum) {
+            @RequestParam(value = "pageNum", defaultValue = "0") int pageNum) {
         List<FollowDetail> peopleIFollow  = followService.getPeopleIFollow(pageNum,pageSize);
         return CommonResult.success(peopleIFollow);
     }
@@ -68,7 +68,7 @@ public class FollowController {
     @ResponseBody
     public CommonResult getFansByUserId(
             @RequestParam(value = "pageSize", defaultValue = "5") int pageSize,
-            @RequestParam(value = "pageNum", defaultValue = "1") int pageNum) {
+            @RequestParam(value = "pageNum", defaultValue = "0") int pageNum) {
         List<FollowDetail> myFans = followService.getMyFans(pageNum,pageSize);
         return CommonResult.success(myFans);
     }

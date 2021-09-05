@@ -48,7 +48,7 @@ public class CommentController {
     @ResponseBody
     public CommonResult GetCommentsByUserId(
             @RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
-            @RequestParam(value = "pageNum", defaultValue = "1") int pageNum) {
+            @RequestParam(value = "pageNum", defaultValue = "0") int pageNum) {
         List<CommentWithArticleInfo> commentWithArticleInfos = commentService.getCommentWithArticleInfosByUserId(pageNum,pageSize);
         return CommonResult.success(commentWithArticleInfos);
     }
@@ -58,7 +58,7 @@ public class CommentController {
     @ResponseBody
     public CommonResult GetCommentDetailsByArticleId(
             @PathVariable long articleId,
-            @RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
+            @RequestParam(value = "pageNum", defaultValue = "0") int pageNum,
             @RequestParam(value = "pageSize", defaultValue = "5") int pageSize) {
         List<CommentDetail> commentDetails = commentService.getCommentDetailsByArticleId(articleId,pageNum,pageSize);
         return CommonResult.success(commentDetails);

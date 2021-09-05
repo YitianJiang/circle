@@ -58,7 +58,7 @@ public class LikeController {
     @ResponseBody
     public CommonResult GetCommentDetailsByArticleId(
             @PathVariable long articleId,
-            @RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
+            @RequestParam(value = "pageNum", defaultValue = "0") int pageNum,
             @RequestParam(value = "pageSize", defaultValue = "5") int pageSize) {
         List<LikeDetail> likeDetails = likeService.getLikeDetailsByArticleId(articleId,pageNum,pageSize);
         return CommonResult.success(likeDetails);
