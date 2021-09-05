@@ -8,13 +8,12 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 public interface ArticleService {
-    /**
-     * 创建文章
-     */
     @Transactional
     long create(CreateArticleDto createArticleDto);
 
     long delete(long id);
+
+    void fillLikeCommentUserDetail(List<ArticleDetail> articleDetails);
 
     List<ArticleDetail> getHomeRecommendArticles(int pageNum, int pageSize);
 

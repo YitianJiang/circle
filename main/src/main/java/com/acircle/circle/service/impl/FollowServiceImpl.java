@@ -40,7 +40,7 @@ public class FollowServiceImpl implements FollowService{
 
     @Override
     public List<FollowDetail> getPeopleIFollow(int pageNum, int pageSize){
-        List<FollowDetail> followDetails = followDao.getPeopleIFollow(userService.getCurrentUserBaseInfoByJWT().getId(),(pageNum - 1) * pageSize,pageSize);
+        List<FollowDetail> followDetails = followDao.getPeopleIFollow(userService.getCurrentUserBaseInfoByJWT().getId(),pageNum * pageSize,pageSize);
         for(int i = 0; i < followDetails.size(); i++){
             followDetails.get(i).getToUser().setFansNum(getFansNum(followDetails.get(i).getToUser().getId()));
         }
@@ -61,7 +61,7 @@ public class FollowServiceImpl implements FollowService{
 
     @Override
     public List<FollowDetail> getMyFans(int pageNum, int pageSize) {
-        return  followDao.getMyFans(userService.getCurrentUserBaseInfoByJWT().getId(),(pageNum - 1) * pageSize,pageSize);
+        return  followDao.getMyFans(userService.getCurrentUserBaseInfoByJWT().getId(),pageNum * pageSize,pageSize);
     }
 
 }

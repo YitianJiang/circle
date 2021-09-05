@@ -99,7 +99,7 @@ public class ArticleServiceImpl implements ArticleService{
 
     @Override
     public List<ArticleDetail> getHomeRecommendArticles(int pageNum, int pageSize){
-        List<ArticleDetail> articleDetails = articleDao.getHomeRecommendArticlesBaseInfo((pageNum - 1) * pageSize,pageSize);
+        List<ArticleDetail> articleDetails = articleDao.getHomeRecommendArticlesBaseInfo((pageNum) * pageSize,pageSize);
         fillLikeCommentUserDetail(articleDetails);
         return  articleDetails;
     }
@@ -129,35 +129,35 @@ public class ArticleServiceImpl implements ArticleService{
     @Override
     public List<ArticleDetail> getArticleDetailsByUserId(long userId, int pageNum, int pageSize){
 //        PageHelper.startPage(pageNum,pageSize);
-        List<ArticleDetail> articleDetails = articleDao.getArticleDetailsByUserId(userId,(pageNum - 1) * pageSize,pageSize);
+        List<ArticleDetail> articleDetails = articleDao.getArticleDetailsByUserId(userId,pageNum * pageSize,pageSize);
         fillLikeCommentDetail(articleDetails);
         return  articleDetails;
     }
 
     @Override
     public List<ArticleDetail> getArticleDetailsByCurrentUserId(int pageNum, int pageSize){
-        List<ArticleDetail> articleDetails = articleDao.getArticleDetailsByUserId(userService.getCurrentUserBaseInfoByJWT().getId(),(pageNum - 1) * pageSize,pageSize);
+        List<ArticleDetail> articleDetails = articleDao.getArticleDetailsByUserId(userService.getCurrentUserBaseInfoByJWT().getId(),pageNum * pageSize,pageSize);
         fillLikeCommentDetail(articleDetails);
         return  articleDetails;
     }
 
     @Override
     public List<ArticleDetail> getUserLikedArticleDetails(int pageNum, int pageSize){
-        List<ArticleDetail> articleDetails = articleDao.getUserLikedArticleDetails(userService.getCurrentUserBaseInfoByJWT().getId(),(pageNum - 1) * pageSize,pageSize);
+        List<ArticleDetail> articleDetails = articleDao.getUserLikedArticleDetails(userService.getCurrentUserBaseInfoByJWT().getId(),pageNum * pageSize,pageSize);
         fillLikeCommentDetail(articleDetails);
         return  articleDetails;
     }
 
     @Override
     public List<ArticleDetail> getUserBookmarkedArticleDetails(int pageNum, int pageSize){
-        List<ArticleDetail> articleDetails = articleDao.getUserBookmarkedArticleDetails(userService.getCurrentUserBaseInfoByJWT().getId(),(pageNum - 1) * pageSize,pageSize);
+        List<ArticleDetail> articleDetails = articleDao.getUserBookmarkedArticleDetails(userService.getCurrentUserBaseInfoByJWT().getId(),pageNum * pageSize,pageSize);
         fillLikeCommentDetail(articleDetails);
         return  articleDetails;
     }
 
     @Override
     public  List<ArticleDetail> getBrowserHistory(int pageNum, int pageSize){
-        List<ArticleDetail> articleDetails = articleDao.getBrowserHistory(userService.getCurrentUserBaseInfoByJWT().getId(),(pageNum - 1) * pageSize,pageSize);
+        List<ArticleDetail> articleDetails = articleDao.getBrowserHistory(userService.getCurrentUserBaseInfoByJWT().getId(),pageNum * pageSize,pageSize);
         fillLikeCommentDetail(articleDetails);
         return  articleDetails;
     }

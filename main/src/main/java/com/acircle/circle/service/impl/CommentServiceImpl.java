@@ -38,7 +38,7 @@ public class CommentServiceImpl implements CommentService{
 
     @Override
     public List<CommentWithArticleInfo> getCommentWithArticleInfosByUserId(int pageNum, int pageSize){
-        List<CommentWithArticleInfo> commentWithArticleInfos = commentDao.getComments(userService.getCurrentUserBaseInfoByJWT().getId(),(pageNum - 1) * pageSize,pageSize);
+        List<CommentWithArticleInfo> commentWithArticleInfos = commentDao.getComments(userService.getCurrentUserBaseInfoByJWT().getId(),pageNum * pageSize,pageSize);
         //填充文章简要
         for(int i = 0; i < commentWithArticleInfos.size(); i++){
             ArticleAbstract articleAbstract = articleService.getArticleAbstractByArticleId(commentWithArticleInfos.get(i).getArticleId()).get(0);
@@ -49,7 +49,7 @@ public class CommentServiceImpl implements CommentService{
 
     @Override
     public  List<CommentDetail>  getCommentDetailsByArticleId(long articleId, int pageNum, int pageSize){
-        List<CommentDetail> commentDetailsByArticleId = commentDao.getCommentDetailsByArticleId(articleId, (pageNum - 1) * pageSize, pageSize);
+        List<CommentDetail> commentDetailsByArticleId = commentDao.getCommentDetailsByArticleId(articleId, pageNum * pageSize, pageSize);
         if(commentDetailsByArticleId.size() == 1 && commentDetailsByArticleId.get(0) == null){
             commentDetailsByArticleId.remove(0);
         }

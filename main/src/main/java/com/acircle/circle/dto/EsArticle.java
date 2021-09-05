@@ -22,5 +22,5 @@ public class EsArticle implements Serializable {
     private String videoUrl;
     private Long userId;
     private Date createTime;
-    private String logo_url;
+    private String logoUrl;
 }
