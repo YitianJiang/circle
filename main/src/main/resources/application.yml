@@ -17,6 +17,13 @@ spring:
     registry:
       address: zookeeper://zookeeper:2181
     scan: com.acircle.circle
+  data:
+    elasticsearch:
+      repositories:
+        enabled: true
+  elasticsearch:
+    rest:
+      uris: elasticsearch:9200
 
 mybatis:
   mapper-locations:

@@ -1,7 +1,8 @@
-package com.acircle.circle.search.service;
+package com.acircle.circle.service;
 
-import com.acircle.circle.search.domain.EsArticle;
+import com.acircle.circle.dto.EsArticle;
 import org.springframework.data.domain.Page;
+
 
 public interface EsArticleService {
     /**

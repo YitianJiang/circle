@@ -1,4 +1,4 @@
-package com.acircle.circle.search.domain;
+package com.acircle.circle.dto;
 
 import lombok.Getter;
 import lombok.Setter;

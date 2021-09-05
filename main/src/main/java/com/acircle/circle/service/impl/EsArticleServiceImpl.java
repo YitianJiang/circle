@@ -1,8 +1,8 @@
-package com.acircle.circle.search.service.impl;
+package com.acircle.circle.service.impl;
 
-import com.acircle.circle.search.domain.EsArticle;
-import com.acircle.circle.search.repository.EsArticleRepository;
-import com.acircle.circle.search.service.EsArticleService;
+import com.acircle.circle.dto.EsArticle;
+import com.acircle.circle.repository.EsArticleRepository;
+import com.acircle.circle.service.EsArticleService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

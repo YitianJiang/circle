@@ -1,6 +1,6 @@
-package com.acircle.circle.search.repository;
+package com.acircle.circle.repository;
 
-import com.acircle.circle.search.domain.EsArticle;
+import com.acircle.circle.dto.EsArticle;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;

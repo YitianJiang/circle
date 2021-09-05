@@ -1,9 +1,9 @@
-package com.acircle.circle.search.controller;
+package com.acircle.circle.controller;
 
 import com.acircle.circle.common.api.CommonPage;
 import com.acircle.circle.common.api.CommonResult;
-import com.acircle.circle.search.domain.EsArticle;
-import com.acircle.circle.search.service.EsArticleService;
+import com.acircle.circle.dto.EsArticle;
+import com.acircle.circle.service.EsArticleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
