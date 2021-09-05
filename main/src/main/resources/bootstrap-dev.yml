@@ -6,8 +6,3 @@ spring:
       config:
         server-addr: http://10.0.0.201:8848
         file-extension: yaml
-
-logging:
-  level:
-    com.alibaba.nacos.client.*: WARN
-    org.springframework.cloud.gateway: trace

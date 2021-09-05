@@ -31,9 +31,11 @@ public class EsArticleServiceImpl implements EsArticleService {
         Pageable pageable = PageRequest.of(pageNum, pageSize);
         Page<EsArticle>  esArticles = esArticleRepository.findByText(keyword, pageable);
         List<ArticleDetail> articleDetails = new ArrayList<>();
-        esArticles.forEach((esArticle) -> {
+        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        esArticles.getContent().forEach((esArticle) -> {
+            System.out.println(esArticle);
             ArticleDetail articleDetail = new ArticleDetail();
-            BeanUtil.copyProperties(articleDetail,esArticle);
+            BeanUtil.copyProperties(esArticle,articleDetail);
             articleDetails.add(articleDetail);
         });
         articleService.fillLikeCommentUserDetail(articleDetails);
