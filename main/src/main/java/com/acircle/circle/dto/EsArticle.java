@@ -8,7 +8,6 @@ import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import java.io.Serializable;
-import java.util.Date;
 
 @Getter
 @Setter
@@ -19,8 +18,13 @@ public class EsArticle implements Serializable {
     private Long id;
     @Field(analyzer = "ik_max_word",type = FieldType.Text)
     private String text;
+    @Field(value = "video_url",type = FieldType.Text)
     private String videoUrl;
+    @Field(value = "user_id",type = FieldType.Long)
     private Long userId;
-    private Date createTime;
+//    @Field(value = "create_time",type = FieldType.Date,format = DateFormat.custom, pattern="yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+    @Field(value = "create_time",type = FieldType.Text)
+    private String createTime;
+    @Field(value = "logo_url",type = FieldType.Text)
     private String logoUrl;
 }
