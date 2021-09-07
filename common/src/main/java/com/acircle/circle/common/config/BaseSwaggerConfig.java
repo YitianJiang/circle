@@ -15,7 +15,6 @@ import java.util.List;
 
 /**
  * Swagger基础配置
- * Created by acircle on 2020/7/16.
  */
 public abstract class BaseSwaggerConfig {
 

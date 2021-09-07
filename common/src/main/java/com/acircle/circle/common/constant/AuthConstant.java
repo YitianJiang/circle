@@ -2,7 +2,6 @@ package com.acircle.circle.common.constant;
 
 /**
  * 权限相关常量定义
- * Created by acircle on 2020/6/19.
  */
 public interface AuthConstant {
 

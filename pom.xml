@@ -49,6 +49,7 @@
         <spring-cloud-alibaba.version>2.2.0.RELEASE</spring-cloud-alibaba.version>
         <dubbo.version>1.0.0</dubbo.version>
         <leaf-api.version>1.0.1</leaf-api.version>
+        <bucket4j.version>4.0.0</bucket4j.version>
         <hutool.version>5.4.0</hutool.version>
         <jjwt.version>0.9.0</jjwt.version>
         <nimbus-jose-jwt.version>8.16</nimbus-jose-jwt.version>
@@ -236,6 +237,12 @@
                 <groupId>com.sankuai.inf.leaf</groupId>
                 <artifactId>api</artifactId>
                 <version>${leaf-api.version}</version>
+            </dependency>
+            <!--限流-->
+            <dependency>
+                <groupId>com.github.vladimir-bukhtoyarov</groupId>
+                <artifactId>bucket4j-core</artifactId>
+                <version>${bucket4j.version}</version>
             </dependency>
             <!--log4j-over-slf4j-->
             <dependency>

@@ -179,4 +179,10 @@ public interface RedisService {
      * 从List结构中移除属性
      */
     Long lRemove(String key, long count, Object value);
+
+    Boolean zSetAdd(String key ,String member, long score);
+
+    Double zScore(String key, String member) ;
+
+    Set<Object> zSetReverseRange(String key, long start, long end);
 }

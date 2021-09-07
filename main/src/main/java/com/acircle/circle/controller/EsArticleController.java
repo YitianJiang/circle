@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @Api(tags = "EsArticleController", description = "文章搜索")
@@ -31,5 +32,14 @@ public class EsArticleController {
         List<ArticleDetail> articleDetails = esArticleService.search(keyword, pageNum, pageSize);
         return CommonResult.success(articleDetails);
     }
+
+    @ApiOperation(value = "获取搜索热榜")
+    @RequestMapping(value = "/search/hotspots", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult<Set<Object>> getSearchHotspots() {
+        Set<Object> searchHotSpots = esArticleService.getSearchHotSpots();
+        return CommonResult.success(searchHotSpots);
+    }
+
 
 }

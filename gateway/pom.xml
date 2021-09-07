@@ -41,6 +41,10 @@
 			<artifactId>spring-cloud-starter-gateway</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>com.github.vladimir-bukhtoyarov</groupId>
+			<artifactId>bucket4j-core</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>com.github.xiaoymin</groupId>
 			<artifactId>knife4j-spring-boot-starter</artifactId>
 		</dependency>

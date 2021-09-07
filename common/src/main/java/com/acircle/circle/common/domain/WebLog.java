@@ -5,7 +5,6 @@ import lombok.EqualsAndHashCode;
 
 /**
  * Controller层的日志封装类
- * Created by acircle on 2018/4/26.
  */
 @Data
 @EqualsAndHashCode(callSuper = false)

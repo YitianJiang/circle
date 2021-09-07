@@ -11,7 +11,6 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * redis操作实现类
- * Created by acircle on 2020/3/3.
  */
 public class RedisServiceImpl implements RedisService {
     @Autowired
@@ -193,5 +192,20 @@ public class RedisServiceImpl implements RedisService {
     @Override
     public Long lRemove(String key, long count, Object value) {
         return redisTemplate.opsForList().remove(key, count, value);
+    }
+
+    @Override
+    public Boolean zSetAdd(String key ,String member, long score){
+        return redisTemplate.opsForZSet().add(key,member,score);
+    }
+
+    @Override
+    public Double zScore(String key, String member) {
+        return redisTemplate.opsForZSet().score(key, member);
+    }
+
+    @Override
+    public Set<Object> zSetReverseRange(String key, long start, long end) {
+        return redisTemplate.opsForZSet().reverseRange(key, start, end);
     }
 }
