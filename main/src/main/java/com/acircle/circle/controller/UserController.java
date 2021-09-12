@@ -36,12 +36,7 @@ public class UserController {
         Result result = snowflakeService.getId("normal");
         if(result.getStatus() == Status.EXCEPTION) return CommonResult.failed();
         userCreateDto.setId(result.getId());
-        long createResult = userService.create(userCreateDto);
-        if (createResult > 0) {
-            return CommonResult.success(createResult);
-        } else {
-            return CommonResult.failed();
-        }
+        return userService.create(userCreateDto);
     }
 
     @ApiOperation("获取用户信息")

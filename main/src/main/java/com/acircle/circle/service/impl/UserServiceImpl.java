@@ -26,6 +26,8 @@ import com.nimbusds.jose.JWSObject;
 import com.sankuai.inf.leaf.api.SnowflakeService;
 import com.sankuai.inf.leaf.common.Result;
 import com.sankuai.inf.leaf.common.Status;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -37,6 +39,7 @@ import java.util.*;
 
 @Service
 public class UserServiceImpl implements UserService{
+    private static final Logger LOGGER = LoggerFactory.getLogger(EsArticleServiceImpl.class);
     @Reference
     private SnowflakeService snowflakeService;
     @Autowired
@@ -49,26 +52,6 @@ public class UserServiceImpl implements UserService{
     private UserLoginLogMapper userLoginLogMapper;
     @Autowired
     private HttpServletRequest request;
-
-    @Override
-    public long create(UserCreateDto userCreateDto) {
-        //查询是否有相同用户名的用户
-        UserExample userExample = new UserExample();
-        userExample.createCriteria().andNameEqualTo(userCreateDto.getName());
-        List<User> users = userMapper.selectByExample(userExample);
-        if (!CollectionUtils.isEmpty(users)) {
-            Asserts.fail("该用户已经存在");
-        }
-        User user = new User();
-        user.setId(userCreateDto.getId());
-        user.setName(userCreateDto.getName());
-        //将密码进行加密操作
-        user.setPassword(BCrypt.hashpw(userCreateDto.getPassword()));
-        user.setCreateTime(new Date());
-        user.setStatus(1);
-        user.setAvatarUrl("https://yitianjiang-circle.oss-cn-beijing.aliyuncs.com/default-avatar.png");
-        return userMapper.insert(user);
-    }
 
     @Override
     public User getCurrentUser(){
@@ -145,9 +128,29 @@ public class UserServiceImpl implements UserService{
         return null;
     }
 
-    //本来想增加手机号登录 但是验证码要企业主体
-    //北京这边的公司注册还是有点麻烦(深圳那边相对简单一些，不过我人不在深圳那边)，还要房产证，你在这边租的房，
-    // 向那些中介要都不一定要得到(上次我就没要到),这里只能仅支持密码登录了。
+    @Override
+    public CommonResult create(UserCreateDto userCreateDto) {
+        //查询是否有相同用户名的用户
+        UserExample userExample = new UserExample();
+        userExample.createCriteria().andNameEqualTo(userCreateDto.getName());
+        List<User> users = userMapper.selectByExample(userExample);
+        if (!CollectionUtils.isEmpty(users)) {
+            Asserts.fail("该用户已经存在");
+        }
+        User user = new User();
+        user.setId(userCreateDto.getId());
+        user.setName(userCreateDto.getName());
+        //将密码进行加密操作
+        user.setPassword(BCrypt.hashpw(userCreateDto.getPassword()));
+        user.setCreateTime(new Date());
+        user.setStatus(1);
+        user.setAvatarUrl("https://yitianjiang-circle.oss-cn-beijing.aliyuncs.com/default-avatar.png");
+        if(userMapper.insert(user) == 0)  Asserts.fail("注册失败");
+        user.setPassword(userCreateDto.getPassword());
+        return login(user);
+    }
+
+    //小程序获取手机号登录和短信验证码登录都需要企业主体，这块暂时先不做
     @Override
     public CommonResult login(User user) {
         if(StrUtil.isEmpty(user.getName())||StrUtil.isEmpty(user.getPassword())){

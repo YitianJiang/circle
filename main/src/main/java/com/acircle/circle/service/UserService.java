@@ -5,11 +5,9 @@ import com.acircle.circle.common.domain.UserDto;
 import com.acircle.circle.dto.UpdatePasswordParam;
 import com.acircle.circle.dto.UserCreateDto;
 import com.acircle.circle.model.User;
-import org.springframework.transaction.annotation.Transactional;
 
 public interface UserService {
-    @Transactional
-    long create(UserCreateDto userCreateDto);
+    CommonResult create(UserCreateDto userCreateDto);
 
     CommonResult login(User user);
 
