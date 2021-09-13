@@ -56,7 +56,7 @@
 
 <img src="https://yitianjiang-circle.oss-cn-beijing.aliyuncs.com/ReadMeImages/circle-er.jpg" alt="系统架构图" style="zoom:200%;" />
 
-注： .ndm2文件： xxxxxxxxxxxxxxxx
+注： .ndm2文件： https://yitianjiang-circle.oss-cn-beijing.aliyuncs.com/circle-v2.ndm2
 
 用navicat打开
 
