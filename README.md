@@ -230,7 +230,7 @@ bash system-install-and-config/circle/circle-env-config-v2.sh
 
 # 接口文档
 
-# {{baseUrl}}: http://127.0.0.1:8088
+# {{baseUrl}}: https://acircle.fun:8201/circle-main
 
 ## 一、接口设计原则：
 
