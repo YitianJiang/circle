@@ -4,9 +4,12 @@
 
 [系统架构](#系统架构)
 
+[项目进度](#项目进度)
+
 [部署](#部署)
 
 [接口文档](#接口文档)
+
 
 # 业务架构
 
@@ -217,6 +220,173 @@ spring cloud gateway的作用：
 
 [2] [MQ选型对比RabbitMQ RocketMQ ActiveMQ](https://blog.csdn.net/a519781181/article/details/79005206)
 
+# 项目进度
+
+公司注册
+
+1.需要另外一人的身份证和u盾
+
+2.自己的U盾
+
+3.办公地点
+
+前端:
+
+1 调用接口如果返回401则显示未登录
+
+2 写一个账号登录界面，请求收藏、关注等信息后如果返回401则跳到登录界面
+
+3 写我的【关注、粉丝】、【文章、收藏、点赞】、评论的详情页
+
+4 完成小程序端的上线
+
+5 搭建一个空vue框架 开始着手web端的事情
+
+6 接口拦截
+
+7 web端改用react 
+
+	7.1 用umi 创建react项目
+	
+	7.2 web端做成博客系统
+	
+8 wxMiniStore阅读
+
+9 前端改接口调用，去掉userId
+
+10 支持发视频
+
+11 个人详情页底部编辑弹框 带遮罩层
+
+12 修复登录 navigate_back失效
+
+13 下拉刷新
+
+14 npm改造 
+
+15 节流
+
+16 点赞列表 从左到右 由新到旧 
+
+17 我的文章 从上到下 由新到旧 
+
+18 评论点赞工具展开按钮 inkwell
+
+后端、运维：
+
+1 springboot集成log4j2
+
+2 docker安装kafka
+
+3 log4j2发送日志到kafka
+
+4 搭建elk
+
+5 logstash从kafka拉取日志处理完后发送到es
+
+6 到kibana上查询日志 验证日志模块
+
+7 前后端基本做完后，先部署到centos7上，用jenkins打包并部署，一有git提交就触发新的打包和部署
+
+	7.1 docker compose 中添加jenkins
+	
+	7.2 使用jenkins进行打包
+	
+	7.3 构建完成自动推送镜像到镜像仓库
+	
+	7.4 gitlab有新的commit触发jenkins构建
+	
+8 迁移到k8s 
+
+	8.1 压力测试 让k8s自动扩缩容
+	
+9 istio做网关
+
+10 docker 安装mysql 并设置配置文件 
+
+	10.1 支持emoji
+  
+	10.2 处理SELECT list is not in GROUP BY clause and contains nonaggregated column
+  
+11 集成链路追踪
+
+12 spring-boot starter demo编写
+
+13 zookeeper桌面客户端
+
+14 机器重启后 让admin等服务在nacos启动之后再启动
+
+15 vscode恢复默认配置
+
+16 openldap 搭建
+
+17 非对称加密 公私钥相互加密解密 对称加密 公私钥相互加密解密
+
+18 编写app的docker-compose
+
+19 把app的docker-compose转换为charts后，用helm部署到k8s上
+
+20 新建一台ecs 搭建app运行环境(docker-compose-env中添加mysql redis nacos)  然后用virtual box搭建
+
+21 张三不能取消李四对王五的关注 
+
+	21.1 接口改造
+	
+22 推荐和排行如何做
+
+23 整合文章、博客搜索
+
+24 mall admin中如何把role resource menu 串起来
+
+25 服务端搭建sts 把secret放在服务端 
+
+26 id改成18位 
+
+27 create_time用客户端的时间 服务端不自动生成
+
+28 根据用户id获取用户发表的文章需要携带token，如果不带token，只能获取到用户公开发表的文章
+
+29 集成es搜索文章
+
+30 mysql配置文件
+
+31 把在头条做的项目 和硕士期间做的项目、硕士论文也传上去
+
+32 把canal打包成docker镜像
+
+33 检查账号是否存在
+
+数据采集
+
+头条爬虫使用
+
+1.采集100万条数据
+
+有可能做不到，只能等进了公司再做？
+
+其他
+
+增加谷歌浏览器历史记录保存时间
+
+## 疑问
+
+jti 的作用？
+
+why bscrypt more safe than md5 ？
+
+how to logout when password has been changed ？
+
+ssrf
+
+博客系统 博客写完后如何保存？
+
+在机器重启后，docker-compose文件中这些服务的启动顺序是否还能保持stop再start的顺序
+
+pod和container区别 为什么要设置pod?
+
+join三种方式
+
+gpg
 
 
 # 部署
