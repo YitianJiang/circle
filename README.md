@@ -356,6 +356,10 @@ spring cloud gateway的作用：
 
 33 检查账号是否存在
 
+34 springcloud gateway使用https
+
+35 网关层限流
+
 数据采集
 
 头条爬虫使用
